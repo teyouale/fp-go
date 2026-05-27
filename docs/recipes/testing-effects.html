@@ -1,0 +1,507 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-recipes/testing-effects" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Testing Effects | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/recipes/testing-effects /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Testing Effects | fp-go"/><meta data-rh=true name=description content="Test IO operations and side effects with fp-go using mocking, dependency injection, and the Reader pattern."/><meta data-rh=true property=og:description content="Test IO operations and side effects with fp-go using mocking, dependency injection, and the Reader pattern."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/recipes/testing-effects /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/testing-effects hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/testing-effects hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/recipes/testing-effects","name":"Testing Effects","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a class="navbar__item navbar__link" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/recipes/testing-effects>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/recipes/testing-effects>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Error Handling</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/validation><span class=num_TgSU>02</span><span class=title_kV1V>Validation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-recovery><span class=num_TgSU>03</span><span class=title_kV1V>Error Recovery</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-handling><span class=num_TgSU>04</span><span class=title_kV1V>Error Handling Patterns</span></a><a class=item_eWIL href=/fp-go/docs/recipes/retry><span class=num_TgSU>05</span><span class=title_kV1V>Retry Logic</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Data Processing</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/data-transformation><span class=num_TgSU>06</span><span class=title_kV1V>Data Transformation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/filtering-mapping><span class=num_TgSU>07</span><span class=title_kV1V>Filtering and Mapping</span></a><a class=item_eWIL href=/fp-go/docs/recipes/aggregation><span class=num_TgSU>08</span><span class=title_kV1V>Data Aggregation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/parsing><span class=num_TgSU>09</span><span class=title_kV1V>Parsing Data</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>01</span></h5><a class=item_eWIL href=/fp-go/docs/recipes-index><span class=num_TgSU>01</span><span class=title_kV1V>Recipes</span></a></div><button type=button class=collapsible_dWJM aria-expanded=false><span>I/O Operations</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class=collapsible_dWJM aria-expanded=false><span>Composition Patterns</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class="collapsible_dWJM collapsibleOpen_k5jx" aria-expanded=true><span>Testing</span><span class=right_oCLK><span>02</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><div class=subGroup_zSqR><a class=item_eWIL href=/fp-go/docs/recipes/testing-pure><span class=num_TgSU>16</span><span class=title_kV1V>Testing Pure Functions</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/recipes/testing-effects><span class=num_TgSU>17</span><span class=title_kV1V>Testing Effects</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Testing</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Testing Effects</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Recipes · 17 / 17</div><h1 class=headTitle_xWjG>Testing<!-- --> <em>Effects</em></h1><p class=lede_Ltdj>Test IO operations and side effects with fp-go using mocking, dependency injection, and the Reader pattern for deterministic, reliable tests.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>Difficulty</span><span class=metaV_zAp5>Intermediate</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Patterns</span><span class=metaV_zAp5>6</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Use Cases</span><span class=metaV_zAp5>IO testing, mocking, integration tests</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=ioeither-testing>Testing<!-- --> <em>IOEither</em></h2></div></div><p>Test IO operations by executing them and asserting on the result.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>ioeither_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+func readConfig() IOE.IOEither[error, string] {
+  return IOE.TryCatch(func() (string, error) {
+      // Simulated file read
+      return "config-value", nil
+  })
+}
+
+func TestReadConfig(t *testing.T) {
+  // Execute the IO operation
+  result := readConfig()()
+  
+  if result.IsLeft() {
+      t.Errorf("Expected success, got error: %v", result.Left())
+  }
+  
+  if result.Right() != "config-value" {
+      t.Errorf("Expected 'config-value', got %q", result.Right())
+  }
+}
+
+func fetchData() IOE.IOEither[error, string] {
+  return IOE.Right[error]("data")
+}
+
+func processData(data string) IOE.IOEither[error, string] {
+  return IOE.Right[error](fmt.Sprintf("processed: %s", data))
+}
+
+func pipeline() IOE.IOEither[error, string] {
+  return F.Pipe1(
+      fetchData(),
+      IOE.Chain(processData),
+  )
+}
+
+func TestPipeline(t *testing.T) {
+  result := pipeline()()
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  expected := "processed: data"
+  if result.Right() != expected {
+      t.Errorf("Expected %q, got %q", expected, result.Right())
+  }
+}
+</pre></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Lazy Evaluation</strong>: IOEither operations don't execute until you call them with <code>()</code>. This lets you build and compose operations without side effects.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=mocking-dependencies>Mocking<!-- --> <em>Dependencies</em></h2></div></div><p>Use interfaces to enable mocking of external dependencies.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>mocking_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "fmt"
+  "testing"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+)
+
+// Interface for database operations
+type Database interface {
+  Query(ctx context.Context, sql string) IOE.IOEither[error, []string]
+}
+
+// Real implementation
+type PostgresDB struct {
+  connString string
+}
+
+func (db *PostgresDB) Query(ctx context.Context, sql string) IOE.IOEither[error, []string] {
+  return IOE.TryCatch(func() ([]string, error) {
+      // Real database query
+      return []string{"result1", "result2"}, nil
+  })
+}
+
+// Mock implementation for testing
+type MockDB struct {
+  queryFunc func(ctx context.Context, sql string) IOE.IOEither[error, []string]
+  calls     []string
+}
+
+func (m *MockDB) Query(ctx context.Context, sql string) IOE.IOEither[error, []string] {
+  m.calls = append(m.calls, sql)
+  if m.queryFunc != nil {
+      return m.queryFunc(ctx, sql)
+  }
+  return IOE.Right[error]([]string{})
+}
+
+// Function under test
+func getUsers(db Database) IOE.IOEither[error, []string] {
+  return db.Query(context.Background(), "SELECT * FROM users")
+}
+
+func TestGetUsers(t *testing.T) {
+  t.Run("successful query", func(t *testing.T) {
+      mockDB := &MockDB{
+          queryFunc: func(ctx context.Context, sql string) IOE.IOEither[error, []string] {
+              return IOE.Right[error]([]string{"user1", "user2"})
+          },
+      }
+      
+      result := getUsers(mockDB)()
+      
+      if result.IsLeft() {
+          t.Fatalf("Expected success, got error: %v", result.Left())
+      }
+      
+      users := result.Right()
+      if len(users) != 2 {
+          t.Errorf("Expected 2 users, got %d", len(users))
+      }
+      
+      // Verify the query was called
+      if len(mockDB.calls) != 1 {
+          t.Errorf("Expected 1 query call, got %d", len(mockDB.calls))
+      }
+  })
+  
+  t.Run("query error", func(t *testing.T) {
+      mockDB := &MockDB{
+          queryFunc: func(ctx context.Context, sql string) IOE.IOEither[error, []string] {
+              return IOE.Left[[]string](fmt.Errorf("connection failed"))
+          },
+      }
+      
+      result := getUsers(mockDB)()
+      
+      if result.IsRight() {
+          t.Error("Expected error, got success")
+      }
+  })
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=reader-pattern>Reader Pattern for<!-- --> <em>Testing</em></h2></div></div><p>Use Reader pattern to inject dependencies for testable code.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>reader_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "testing"
+  RIE "github.com/IBM/fp-go/v2/readerioeither"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+)
+
+type Dependencies struct {
+  DB     Database
+  Logger Logger
+}
+
+type Logger interface {
+  Info(msg string)
+  Error(msg string)
+}
+
+type AppEffect[A any] = RIE.ReaderIOEither[Dependencies, error, A]
+
+func getUsersWithLogging() AppEffect[[]string] {
+  return RIE.Asks(func(deps Dependencies) IOE.IOEither[error, []string] {
+      deps.Logger.Info("Fetching users")
+      return deps.DB.Query(context.Background(), "SELECT * FROM users")
+  })
+}
+
+// Mock logger for testing
+type MockLogger struct {
+  infos  []string
+  errors []string
+}
+
+func (m *MockLogger) Info(msg string) {
+  m.infos = append(m.infos, msg)
+}
+
+func (m *MockLogger) Error(msg string) {
+  m.errors = append(m.errors, msg)
+}
+
+func TestGetUsersWithLogging(t *testing.T) {
+  mockDB := &MockDB{
+      queryFunc: func(ctx context.Context, sql string) IOE.IOEither[error, []string] {
+          return IOE.Right[error]([]string{"user1", "user2"})
+      },
+  }
+  
+  mockLogger := &MockLogger{}
+  
+  deps := Dependencies{
+      DB:     mockDB,
+      Logger: mockLogger,
+  }
+  
+  result := getUsersWithLogging()(deps)()
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  // Verify logging
+  if len(mockLogger.infos) != 1 {
+      t.Errorf("Expected 1 info log, got %d", len(mockLogger.infos))
+  }
+  
+  if mockLogger.infos[0] != "Fetching users" {
+      t.Errorf("Expected 'Fetching users', got %q", mockLogger.infos[0])
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=file-http-testing>Testing File & HTTP<!-- --> <em>Operations</em></h2></div></div><p>Mock file system and HTTP clients for isolated tests.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>filesystem_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  "testing"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+type FileSystem interface {
+  ReadFile(path string) IOE.IOEither[error, []byte]
+  WriteFile(path string, data []byte) IOE.IOEither[error, int]
+}
+
+type MockFS struct {
+  files map[string][]byte
+}
+
+func NewMockFS() *MockFS {
+  return &MockFS{
+      files: make(map[string][]byte),
+  }
+}
+
+func (m *MockFS) ReadFile(path string) IOE.IOEither[error, []byte] {
+  return IOE.TryCatch(func() ([]byte, error) {
+      if data, ok := m.files[path]; ok {
+          return data, nil
+      }
+      return nil, fmt.Errorf("file not found: %s", path)
+  })
+}
+
+func (m *MockFS) WriteFile(path string, data []byte) IOE.IOEither[error, int] {
+  return IOE.TryCatch(func() (int, error) {
+      m.files[path] = data
+      return len(data), nil
+  })
+}
+
+func copyFile(fs FileSystem, src, dst string) IOE.IOEither[error, int] {
+  return F.Pipe2(
+      fs.ReadFile(src),
+      IOE.Chain(func(data []byte) IOE.IOEither[error, int] {
+          return fs.WriteFile(dst, data)
+      }),
+  )
+}
+
+func TestCopyFile(t *testing.T) {
+  fs := NewMockFS()
+  fs.files["source.txt"] = []byte("test content")
+  
+  result := copyFile(fs, "source.txt", "dest.txt")()
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  // Verify file was copied
+  if data, ok := fs.files["dest.txt"]; !ok {
+      t.Error("Destination file not created")
+  } else if string(data) != "test content" {
+      t.Errorf("Expected 'test content', got %q", string(data))
+  }
+}
+</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>http_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "encoding/json"
+  "fmt"
+  "testing"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+type HTTPClient interface {
+  Get(url string) IOE.IOEither[error, []byte]
+  Post(url string, data []byte) IOE.IOEither[error, []byte]
+}
+
+type MockHTTPClient struct {
+  getFunc  func(url string) IOE.IOEither[error, []byte]
+  postFunc func(url string, data []byte) IOE.IOEither[error, []byte]
+  calls    []string
+}
+
+func (m *MockHTTPClient) Get(url string) IOE.IOEither[error, []byte] {
+  m.calls = append(m.calls, "GET "+url)
+  if m.getFunc != nil {
+      return m.getFunc(url)
+  }
+  return IOE.Right[error]([]byte("{}"))
+}
+
+func (m *MockHTTPClient) Post(url string, data []byte) IOE.IOEither[error, []byte] {
+  m.calls = append(m.calls, "POST "+url)
+  if m.postFunc != nil {
+      return m.postFunc(url, data)
+  }
+  return IOE.Right[error]([]byte("{}"))
+}
+
+type User struct {
+  ID   int    `json:"id"`
+  Name string `json:"name"`
+}
+
+func fetchUser(client HTTPClient, id int) IOE.IOEither[error, User] {
+  return F.Pipe2(
+      client.Get(fmt.Sprintf("https://api.example.com/users/%d", id)),
+      IOE.Chain(func(data []byte) IOE.IOEither[error, User] {
+          return IOE.TryCatch(func() (User, error) {
+              var user User
+              err := json.Unmarshal(data, &user)
+              return user, err
+          })
+      }),
+  )
+}
+
+func TestFetchUser(t *testing.T) {
+  mockClient := &MockHTTPClient{
+      getFunc: func(url string) IOE.IOEither[error, []byte] {
+          user := User{ID: 1, Name: "Alice"}
+          data, _ := json.Marshal(user)
+          return IOE.Right[error](data)
+      },
+  }
+  
+  result := fetchUser(mockClient, 1)()
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  user := result.Right()
+  if user.Name != "Alice" {
+      t.Errorf("Expected 'Alice', got %q", user.Name)
+  }
+  
+  // Verify HTTP call was made
+  if len(mockClient.calls) != 1 {
+      t.Errorf("Expected 1 HTTP call, got %d", len(mockClient.calls))
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=async-testing>Testing Async<!-- --> <em>Operations</em></h2></div></div><p>Test parallel execution and verify timing characteristics.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>async_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  "time"
+  A "github.com/IBM/fp-go/v2/array"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+)
+
+func slowOperation(n int) IOE.IOEither[error, int] {
+  return IOE.TryCatch(func() (int, error) {
+      time.Sleep(10 * time.Millisecond)
+      return n * 2, nil
+  })
+}
+
+func TestParallelExecution(t *testing.T) {
+  numbers := []int{1, 2, 3, 4, 5}
+  
+  start := time.Now()
+  result := A.Traverse[int](IOE.ApplicativePar[error, int]())(
+      slowOperation,
+  )(numbers)()
+  duration := time.Since(start)
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  // Parallel execution should be faster than sequential
+  // 5 operations * 10ms = 50ms sequential
+  // Should complete in ~10-20ms parallel
+  if duration > 30*time.Millisecond {
+      t.Errorf("Parallel execution too slow: %v", duration)
+  }
+  
+  expected := []int{2, 4, 6, 8, 10}
+  if !equalSlices(result.Right(), expected) {
+      t.Errorf("Expected %v, got %v", expected, result.Right())
+  }
+}
+
+func equalSlices[A comparable](a, b []A) bool {
+  if len(a) != len(b) {
+      return false
+  }
+  for i := range a {
+      if a[i] != b[i] {
+          return false
+      }
+  }
+  return true
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=error-retry-testing>Testing Error & Retry<!-- --> <em>Logic</em></h2></div></div><p>Test error handling and retry mechanisms with controlled failures.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>retry_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  "testing"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+)
+
+func withRetry[A any](maxAttempts int, operation IOE.IOEither[error, A]) IOE.IOEither[error, A] {
+  return func() IOE.Either[error, A] {
+      var lastErr error
+      for i := 0; i &lt; maxAttempts; i++ {
+          result := operation()
+          if result.IsRight() {
+              return result
+          }
+          lastErr = result.Left()
+      }
+      return IOE.Left[A](fmt.Errorf("failed after %d attempts: %w", maxAttempts, lastErr))()
+  }
+}
+
+func TestRetry(t *testing.T) {
+  t.Run("succeeds on first attempt", func(t *testing.T) {
+      attempts := 0
+      operation := IOE.TryCatch(func() (string, error) {
+          attempts++
+          return "success", nil
+      })
+      
+      result := withRetry(3, operation)()
+      
+      if result.IsLeft() {
+          t.Errorf("Expected success, got error: %v", result.Left())
+      }
+      
+      if attempts != 1 {
+          t.Errorf("Expected 1 attempt, got %d", attempts)
+      }
+  })
+  
+  t.Run("succeeds on third attempt", func(t *testing.T) {
+      attempts := 0
+      operation := IOE.TryCatch(func() (string, error) {
+          attempts++
+          if attempts &lt; 3 {
+              return "", fmt.Errorf("attempt %d failed", attempts)
+          }
+          return "success", nil
+      })
+      
+      result := withRetry(3, operation)()
+      
+      if result.IsLeft() {
+          t.Errorf("Expected success, got error: %v", result.Left())
+      }
+      
+      if attempts != 3 {
+          t.Errorf("Expected 3 attempts, got %d", attempts)
+      }
+  })
+  
+  t.Run("fails after max attempts", func(t *testing.T) {
+      attempts := 0
+      operation := IOE.TryCatch(func() (string, error) {
+          attempts++
+          return "", fmt.Errorf("attempt %d failed", attempts)
+      })
+      
+      result := withRetry(3, operation)()
+      
+      if result.IsRight() {
+          t.Error("Expected error, got success")
+      }
+      
+      if attempts != 3 {
+          t.Errorf("Expected 3 attempts, got %d", attempts)
+      }
+  })
+}
+</pre></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/recipes/testing-pure><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Testing Pure Functions</span></a><span></span></nav></article></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

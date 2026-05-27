@@ -1,0 +1,444 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-recipes/testing-pure" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Testing Pure Functions | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/recipes/testing-pure /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Testing Pure Functions | fp-go"/><meta data-rh=true name=description content="Test pure functions and functional code with fp-go using table-driven tests, property-based testing, and helper functions."/><meta data-rh=true property=og:description content="Test pure functions and functional code with fp-go using table-driven tests, property-based testing, and helper functions."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/recipes/testing-pure /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/testing-pure hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/testing-pure hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/recipes/testing-pure","name":"Testing Pure Functions","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a class="navbar__item navbar__link" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/recipes/testing-pure>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/recipes/testing-pure>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Error Handling</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/validation><span class=num_TgSU>02</span><span class=title_kV1V>Validation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-recovery><span class=num_TgSU>03</span><span class=title_kV1V>Error Recovery</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-handling><span class=num_TgSU>04</span><span class=title_kV1V>Error Handling Patterns</span></a><a class=item_eWIL href=/fp-go/docs/recipes/retry><span class=num_TgSU>05</span><span class=title_kV1V>Retry Logic</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Data Processing</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/data-transformation><span class=num_TgSU>06</span><span class=title_kV1V>Data Transformation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/filtering-mapping><span class=num_TgSU>07</span><span class=title_kV1V>Filtering and Mapping</span></a><a class=item_eWIL href=/fp-go/docs/recipes/aggregation><span class=num_TgSU>08</span><span class=title_kV1V>Data Aggregation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/parsing><span class=num_TgSU>09</span><span class=title_kV1V>Parsing Data</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>01</span></h5><a class=item_eWIL href=/fp-go/docs/recipes-index><span class=num_TgSU>01</span><span class=title_kV1V>Recipes</span></a></div><button type=button class=collapsible_dWJM aria-expanded=false><span>I/O Operations</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class=collapsible_dWJM aria-expanded=false><span>Composition Patterns</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class="collapsible_dWJM collapsibleOpen_k5jx" aria-expanded=true><span>Testing</span><span class=right_oCLK><span>02</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><div class=subGroup_zSqR><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/recipes/testing-pure><span class=num_TgSU>16</span><span class=title_kV1V>Testing Pure Functions</span></a><a class=item_eWIL href=/fp-go/docs/recipes/testing-effects><span class=num_TgSU>17</span><span class=title_kV1V>Testing Effects</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Testing</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Testing Pure Functions</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Recipes · 16 / 17</div><h1 class=headTitle_xWjG>Testing Pure<!-- --> <em>Functions</em></h1><p class=lede_Ltdj>Test pure functions and functional code with fp-go using table-driven tests, property-based testing, and helper functions for deterministic, reliable tests.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>Difficulty</span><span class=metaV_zAp5>Beginner</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Patterns</span><span class=metaV_zAp5>6</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Use Cases</span><span class=metaV_zAp5>Unit testing, property testing, benchmarking</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=basic-testing>Basic<!-- --> <em>Testing</em></h2></div></div><p>Pure functions are the easiest to test—same input always produces same output, no side effects.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>simple_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  O "github.com/IBM/fp-go/v2/option"
+)
+
+func add(a, b int) int {
+  return a + b
+}
+
+func TestAdd(t *testing.T) {
+  tests := []struct {
+      name     string
+      a, b     int
+      expected int
+  }{
+      {"positive numbers", 2, 3, 5},
+      {"negative numbers", -2, -3, -5},
+      {"mixed signs", -2, 3, 1},
+      {"with zero", 0, 5, 5},
+  }
+  
+  for _, tt := range tests {
+      t.Run(tt.name, func(t *testing.T) {
+          result := add(tt.a, tt.b)
+          if result != tt.expected {
+              t.Errorf("add(%d, %d) = %d; want %d", tt.a, tt.b, result, tt.expected)
+          }
+      })
+  }
+}
+</pre></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Why Pure Functions Are Easy to Test</strong>: No setup, no teardown, no mocks—just call the function and assert the result.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=option-either>Testing Option &<!-- --> <em>Either</em></h2></div></div><p>Test Option and Either types with helper functions for cleaner assertions.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>option_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  O "github.com/IBM/fp-go/v2/option"
+)
+
+func divide(a, b float64) O.Option[float64] {
+  if b == 0 {
+      return O.None[float64]()
+  }
+  return O.Some(a / b)
+}
+
+// Helper for testing Option values
+func assertSome[A comparable](t *testing.T, opt O.Option[A], expected A) {
+  t.Helper()
+  
+  if O.IsNone(opt) {
+      t.Fatalf("Expected Some(%v), got None", expected)
+  }
+  
+  value := O.GetOrElse(func() A { var zero A; return zero })(opt)
+  if value != expected {
+      t.Errorf("Expected %v, got %v", expected, value)
+  }
+}
+
+func assertNone[A any](t *testing.T, opt O.Option[A]) {
+  t.Helper()
+  
+  if O.IsSome(opt) {
+      t.Fatalf("Expected None, got Some(%v)", opt)
+  }
+}
+
+func TestDivide(t *testing.T) {
+  t.Run("valid division", func(t *testing.T) {
+      result := divide(10, 2)
+      assertSome(t, result, 5.0)
+  })
+  
+  t.Run("division by zero", func(t *testing.T) {
+      result := divide(10, 0)
+      assertNone(t, result)
+  })
+}
+</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>either_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  "strconv"
+  "testing"
+  E "github.com/IBM/fp-go/v2/either"
+)
+
+func parseInt(s string) E.Either[error, int] {
+  n, err := strconv.Atoi(s)
+  if err != nil {
+      return E.Left[int](err)
+  }
+  return E.Right[error](n)
+}
+
+// Helper for testing Either values
+func assertRight[E, A comparable](t *testing.T, either E.Either[E, A], expected A) {
+  t.Helper()
+  
+  if either.IsLeft() {
+      t.Fatalf("Expected Right(%v), got Left(%v)", expected, either.Left())
+  }
+  
+  if either.Right() != expected {
+      t.Errorf("Expected %v, got %v", expected, either.Right())
+  }
+}
+
+func assertLeft[E comparable, A any](t *testing.T, either E.Either[E, A], expectedErr E) {
+  t.Helper()
+  
+  if either.IsRight() {
+      t.Fatalf("Expected Left(%v), got Right(%v)", expectedErr, either.Right())
+  }
+  
+  if either.Left() != expectedErr {
+      t.Errorf("Expected error %v, got %v", expectedErr, either.Left())
+  }
+}
+
+func TestParseInt(t *testing.T) {
+  t.Run("valid integer", func(t *testing.T) {
+      result := parseInt("42")
+      assertRight(t, result, 42)
+  })
+  
+  t.Run("invalid integer", func(t *testing.T) {
+      result := parseInt("not a number")
+      if result.IsRight() {
+          t.Error("Expected Left, got Right")
+      }
+  })
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=array-operations>Testing Array<!-- --> <em>Operations</em></h2></div></div><p>Test array transformations with table-driven tests for comprehensive coverage.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>array_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  A "github.com/IBM/fp-go/v2/array"
+)
+
+func TestArrayMap(t *testing.T) {
+  input := []int{1, 2, 3, 4, 5}
+  expected := []int{2, 4, 6, 8, 10}
+  
+  result := A.Map(func(n int) int {
+      return n * 2
+  })(input)
+  
+  if !equalSlices(result, expected) {
+      t.Errorf("Expected %v, got %v", expected, result)
+  }
+}
+
+func TestArrayFilter(t *testing.T) {
+  input := []int{1, 2, 3, 4, 5, 6}
+  expected := []int{2, 4, 6}
+  
+  result := A.Filter(func(n int) bool {
+      return n%2 == 0
+  })(input)
+  
+  if !equalSlices(result, expected) {
+      t.Errorf("Expected %v, got %v", expected, result)
+  }
+}
+
+func sum(numbers []int) int {
+  return A.Reduce(func(acc, n int) int {
+      return acc + n
+  })(0)(numbers)
+}
+
+func TestSum(t *testing.T) {
+  tests := []struct {
+      name     string
+      input    []int
+      expected int
+  }{
+      {"empty array", []int{}, 0},
+      {"single element", []int{5}, 5},
+      {"multiple elements", []int{1, 2, 3, 4, 5}, 15},
+      {"negative numbers", []int{-1, -2, -3}, -6},
+  }
+  
+  for _, tt := range tests {
+      t.Run(tt.name, func(t *testing.T) {
+          result := sum(tt.input)
+          if result != tt.expected {
+              t.Errorf("sum(%v) = %d; want %d", tt.input, result, tt.expected)
+          }
+      })
+  }
+}
+
+func equalSlices[A comparable](a, b []A) bool {
+  if len(a) != len(b) {
+      return false
+  }
+  for i := range a {
+      if a[i] != b[i] {
+          return false
+      }
+  }
+  return true
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=composition>Testing<!-- --> <em>Composition</em></h2></div></div><p>Test function composition with Pipe and Flow.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>composition_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "strings"
+  "testing"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+func normalizeString(s string) string {
+  return F.Pipe3(
+      s,
+      strings.TrimSpace,
+      strings.ToLower,
+      func(s string) string {
+          return strings.ReplaceAll(s, " ", "-")
+      },
+  )
+}
+
+func TestNormalizeString(t *testing.T) {
+  tests := []struct {
+      name     string
+      input    string
+      expected string
+  }{
+      {"with spaces", "  Hello World  ", "hello-world"},
+      {"mixed case", "FooBar", "foobar"},
+      {"already normalized", "hello-world", "hello-world"},
+      {"empty string", "", ""},
+  }
+  
+  for _, tt := range tests {
+      t.Run(tt.name, func(t *testing.T) {
+          result := normalizeString(tt.input)
+          if result != tt.expected {
+              t.Errorf("normalizeString(%q) = %q; want %q", tt.input, result, tt.expected)
+          }
+      })
+  }
+}
+
+var double = func(n int) int { return n * 2 }
+var addTen = func(n int) int { return n + 10 }
+var toString = func(n int) string { return fmt.Sprintf("%d", n) }
+
+var pipeline = F.Flow3(double, addTen, toString)
+
+func TestPipeline(t *testing.T) {
+  tests := []struct {
+      name     string
+      input    int
+      expected string
+  }{
+      {"positive number", 5, "20"},  // (5 * 2) + 10 = 20
+      {"zero", 0, "10"},             // (0 * 2) + 10 = 10
+      {"negative number", -3, "4"},  // (-3 * 2) + 10 = 4
+  }
+  
+  for _, tt := range tests {
+      t.Run(tt.name, func(t *testing.T) {
+          result := pipeline(tt.input)
+          if result != tt.expected {
+              t.Errorf("pipeline(%d) = %q; want %q", tt.input, result, tt.expected)
+          }
+      })
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=property-testing>Property-Based<!-- --> <em>Testing</em></h2></div></div><p>Test mathematical properties and laws that should hold for all inputs.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>property_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  O "github.com/IBM/fp-go/v2/option"
+  M "github.com/IBM/fp-go/v2/monoid"
+)
+
+func head[A any](slice []A) O.Option[A] {
+  if len(slice) == 0 {
+      return O.None[A]()
+  }
+  return O.Some(slice[0])
+}
+
+func TestHeadProperties(t *testing.T) {
+  t.Run("non-empty returns Some", func(t *testing.T) {
+      inputs := [][]int{
+          {1},
+          {1, 2},
+          {1, 2, 3},
+      }
+      
+      for _, input := range inputs {
+          result := head(input)
+          if O.IsNone(result) {
+              t.Errorf("head(%v) should be Some, got None", input)
+          }
+      }
+  })
+  
+  t.Run("empty returns None", func(t *testing.T) {
+      result := head([]int{})
+      if O.IsSome(result) {
+          t.Error("head([]) should be None, got Some")
+      }
+  })
+  
+  t.Run("returns first element", func(t *testing.T) {
+      tests := []struct {
+          input    []int
+          expected int
+      }{
+          {[]int{1, 2, 3}, 1},
+          {[]int{42}, 42},
+          {[]int{-5, 10, 15}, -5},
+      }
+      
+      for _, tt := range tests {
+          result := head(tt.input)
+          value := O.GetOrElse(func() int { return 0 })(result)
+          if value != tt.expected {
+              t.Errorf("head(%v) = %d; want %d", tt.input, value, tt.expected)
+          }
+      }
+  })
+}
+
+func TestMonoidLaws(t *testing.T) {
+  monoid := M.MakeMonoid(
+      func() int { return 0 },
+      func(a, b int) int { return a + b },
+  )
+  
+  t.Run("left identity", func(t *testing.T) {
+      // empty() &lt;> x = x
+      x := 5
+      result := monoid.Concat(monoid.Empty(), x)
+      if result != x {
+          t.Errorf("Left identity failed: empty &lt;> %d = %d; want %d", x, result, x)
+      }
+  })
+  
+  t.Run("right identity", func(t *testing.T) {
+      // x &lt;> empty() = x
+      x := 5
+      result := monoid.Concat(x, monoid.Empty())
+      if result != x {
+          t.Errorf("Right identity failed: %d &lt;> empty = %d; want %d", x, result, x)
+      }
+  })
+  
+  t.Run("associativity", func(t *testing.T) {
+      // (x &lt;> y) &lt;> z = x &lt;> (y &lt;> z)
+      x, y, z := 1, 2, 3
+      left := monoid.Concat(monoid.Concat(x, y), z)
+      right := monoid.Concat(x, monoid.Concat(y, z))
+      if left != right {
+          t.Errorf("Associativity failed: (%d &lt;> %d) &lt;> %d = %d; %d &lt;> (%d &lt;> %d) = %d",
+              x, y, z, left, x, y, z, right)
+      }
+  })
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=benchmarking>Benchmarking Pure<!-- --> <em>Functions</em></h2></div></div><p>Benchmark pure functions to measure performance and compare implementations.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>benchmark_test.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "testing"
+  A "github.com/IBM/fp-go/v2/array"
+)
+
+func BenchmarkArrayMap(b *testing.B) {
+  input := A.MakeBy(1000)(func(i int) int { return i })
+  
+  b.ResetTimer()
+  for i := 0; i &lt; b.N; i++ {
+      A.Map(func(n int) int {
+          return n * 2
+      })(input)
+  }
+}
+
+func BenchmarkArrayFilter(b *testing.B) {
+  input := A.MakeBy(1000)(func(i int) int { return i })
+  
+  b.ResetTimer()
+  for i := 0; i &lt; b.N; i++ {
+      A.Filter(func(n int) bool {
+          return n%2 == 0
+      })(input)
+  }
+}
+
+func sumImperative(numbers []int) int {
+  sum := 0
+  for _, n := range numbers {
+      sum += n
+  }
+  return sum
+}
+
+func sumFunctional(numbers []int) int {
+  return A.Reduce(func(acc, n int) int {
+      return acc + n
+  })(0)(numbers)
+}
+
+func BenchmarkSumImperative(b *testing.B) {
+  input := A.MakeBy(1000)(func(i int) int { return i })
+  
+  b.ResetTimer()
+  for i := 0; i &lt; b.N; i++ {
+      sumImperative(input)
+  }
+}
+
+func BenchmarkSumFunctional(b *testing.B) {
+  input := A.MakeBy(1000)(func(i int) int { return i })
+  
+  b.ResetTimer()
+  for i := 0; i &lt; b.N; i++ {
+      sumFunctional(input)
+  }
+}
+</pre></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Running Benchmarks</strong>: Use <code>go test -bench=. -benchmem</code> to run benchmarks and see memory allocations.</div></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/recipes/middleware><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Middleware Patterns</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/recipes/testing-effects><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Testing Effects</span></a></nav></article></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

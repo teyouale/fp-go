@@ -1,0 +1,435 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-concepts/effects-and-io" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Effects and IO | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/concepts/effects-and-io /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Effects and IO | fp-go"/><meta data-rh=true name=description content="Learn to manage side effects explicitly and safely with fp-go's IO types."/><meta data-rh=true property=og:description content="Learn to manage side effects explicitly and safely with fp-go's IO types."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/concepts/effects-and-io /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/effects-and-io hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/effects-and-io hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/concepts/effects-and-io","name":"Effects and IO","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/concepts/effects-and-io>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/concepts/effects-and-io>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Migration</span><span class=ct_cC82>03</span></h5><a class=item_eWIL href=/fp-go/docs/migration><span class=num_TgSU>06</span><span class=title_kV1V>Migration Guide</span></a><a class=item_eWIL href=/fp-go/docs/migration/v1-to-v2><span class=num_TgSU>07</span><span class=title_kV1V>v1 to v2 Migration</span></a><a class=item_eWIL href=/fp-go/docs/migration/interop><span class=num_TgSU>08</span><span class=title_kV1V>v1 and v2 Interop</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Concepts</span><span class=ct_cC82>06</span></h5><a class=item_eWIL href=/fp-go/docs/concepts/pure-functions><span class=num_TgSU>09</span><span class=title_kV1V>Pure Functions</span></a><a class=item_eWIL href=/fp-go/docs/concepts/monads><span class=num_TgSU>10</span><span class=title_kV1V>Monads</span></a><a class=item_eWIL href=/fp-go/docs/concepts/composition><span class=num_TgSU>11</span><span class=title_kV1V>Composition</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/concepts/effects-and-io><span class=num_TgSU>12</span><span class=title_kV1V>Effects and IO</span></a><a class=item_eWIL href=/fp-go/docs/concepts/higher-kinded-types><span class=num_TgSU>13</span><span class=title_kV1V>Higher-Kinded Types</span></a><a class=item_eWIL href=/fp-go/docs/concepts/zen-of-go><span class=num_TgSU>14</span><span class=title_kV1V>The Zen of Go</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>08</span></h5><a class=item_eWIL href=/fp-go/docs/intro><span class=num_TgSU>01</span><span class=title_kV1V>What is fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/installation><span class=num_TgSU>02</span><span class=title_kV1V>Installation</span></a><a class=item_eWIL href=/fp-go/docs/quickstart><span class=num_TgSU>03</span><span class=title_kV1V>5-Minute Quickstart</span></a><a class=item_eWIL href=/fp-go/docs/why-fp-go><span class=num_TgSU>04</span><span class=title_kV1V>Why fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/comparison><span class=num_TgSU>05</span><span class=title_kV1V>Comparison with Other Libraries</span></a><a class=item_eWIL href=/fp-go/docs/faq><span class=num_TgSU>15</span><span class=title_kV1V>Frequently Asked Questions</span></a><a class=item_eWIL href=/fp-go/docs/glossary><span class=num_TgSU>16</span><span class=title_kV1V>Glossary</span></a><a class=item_eWIL href=/fp-go/docs/design-kit><span class=num_TgSU>17</span><span class=title_kV1V>Content design kit</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Concepts</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Effects and IO</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Concepts · 04 / 06</div><h1 class=headTitle_xWjG>Effects and<!-- --> <em>IO.</em></h1><p class=lede_Ltdj>Manage side effects explicitly and safely. Learn how IO types let you describe effects as pure values, then execute them when ready.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>// Difficulty</span><span class=metaV_zAp5>Intermediate</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Reading time</span><span class=metaV_zAp5>15 min · 9 sections</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Prereqs</span><span class=metaV_zAp5>Pure functions, composition</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap up_ip1p"><div class=tldrK_kP7m>// Key insight</div><div class="tldrV_gUPe tldrVProse_sV_2">Effects are <em>descriptions</em>, not executions.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// Recommended type</div><div class="tldrV_gUPe tldrVProse_sV_2"><code>IOResult[A]</code> for most effects.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// Benefits</div><div class="tldrV_gUPe tldrVProse_sV_2">Lazy, composable, <em>testable</em> effects.</div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=what-are-effects>What are<!-- --> <em>effects?</em></h2></div></div><p>An <strong>effect</strong> is anything that interacts with the outside world:<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>effects.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Reading files
+data, err := os.ReadFile("config.json")
+
+// ❌ Writing files
+os.WriteFile("output.txt", data, 0644)
+
+// ❌ Network calls
+resp, err := http.Get("https://api.example.com")
+
+// ❌ Database queries
+rows, err := db.Query("SELECT * FROM users")
+
+// ❌ Printing to console
+fmt.Println("Hello, World!")
+
+// ❌ Getting current time
+now := time.Now()
+
+// ❌ Random numbers
+rand.Int()
+
+// ❌ Modifying global state
+globalCounter++</pre></div><p><strong>Why are these effects?</strong><ul>
+<li class="">They depend on external state</li>
+<li class="">They modify external state</li>
+<li class="">They're not deterministic</li>
+<li class="">They can fail</li>
+</ul></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=problem>The problem with<!-- --> <em>effects.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=effects-make-functions-impure>Effects Make Functions Impure<a href=#effects-make-functions-impure class=hash-link aria-label="Direct link to Effects Make Functions Impure" title="Direct link to Effects Make Functions Impure" translate=no>​</a></h3><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>impure.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Impure: executes immediately, can't control when
+func loadConfig() Config {
+  data, _ := os.ReadFile("config.json")  // Effect happens NOW
+  var config Config
+  json.Unmarshal(data, &config)
+  return config
+}
+
+// Problems:
+// 1. Executes immediately (can't delay)
+// 2. Hard to test (needs real file)
+// 3. Can't compose easily
+// 4. Errors ignored</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>pure.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Pure: returns a DESCRIPTION of the effect
+func loadConfig() ioresult.IOResult[Config] {
+  return func() result.Result[Config] {
+      data, err := os.ReadFile("config.json")
+      if err != nil {
+          return result.Err[Config](err)
+      }
+      
+      var config Config
+      err = json.Unmarshal(data, &config)
+      return result.FromGoError(config, err)
+  }
+}
+
+// Benefits:
+// 1. Doesn't execute until called
+// 2. Easy to test (mock the function)
+// 3. Composable
+// 4. Proper error handling</pre></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=io-type>The IO<!-- --> <em>type.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=what-is-io>What is IO?<a href=#what-is-io class=hash-link aria-label="Direct link to What is IO?" title="Direct link to What is IO?" translate=no>​</a></h3><p><strong>IO</strong> is a type that represents a lazy computation that performs side effects.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-basic.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// IO[A] is just a function that returns A
+type IO[A any] func() A
+
+// Example
+var readFile IO[[]byte] = func() []byte {
+  data, _ := os.ReadFile("file.txt")
+  return data
+}
+
+// Nothing happens yet!
+// The function is just stored
+
+// Execute it
+data := readFile()  // NOW the file is read</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-properties>Key Properties<a href=#key-properties class=hash-link aria-label="Direct link to Key Properties" title="Direct link to Key Properties" translate=no>​</a></h3><ol>
+<li class=""><strong>Lazy</strong> - Doesn't execute until you call it</li>
+<li class=""><strong>Composable</strong> - Can be chained with other IOs</li>
+<li class=""><strong>Testable</strong> - Can be mocked or replaced</li>
+<li class=""><strong>Explicit</strong> - Effect is visible in the type</li>
+</ol></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=io-variants>IO variants in<!-- --> <em>fp-go.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=io---simple-effects>IO - Simple Effects<a href=#io---simple-effects class=hash-link aria-label="Direct link to IO - Simple Effects" title="Direct link to IO - Simple Effects" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-simple.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/io"
+
+// IO[A] - returns A
+type IO[A any] func() A
+
+// Example
+printHello := io.Of(func() string {
+  fmt.Println("Hello!")
+  return "done"
+})
+
+// Execute
+result := printHello()  // Prints "Hello!", returns "done"</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=iooption---effects-that-might-fail>IOOption - Effects that Might Fail<a href=#iooption---effects-that-might-fail class=hash-link aria-label="Direct link to IOOption - Effects that Might Fail" title="Direct link to IOOption - Effects that Might Fail" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-option.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/iooption"
+
+// IOOption[A] - returns Option[A]
+type IOOption[A any] func() option.Option[A]
+
+// Example
+findUser := func(id string) iooption.IOOption[User] {
+  return func() option.Option[User] {
+      user := db.FindByID(id)
+      if user == nil {
+          return option.None[User]()
+      }
+      return option.Some(*user)
+  }
+}
+
+// Execute
+userOpt := findUser("123")()</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=ioresult---effects-with-error-handling->IOResult - Effects with Error Handling ⭐<a href=#ioresult---effects-with-error-handling- class=hash-link aria-label="Direct link to IOResult - Effects with Error Handling ⭐" title="Direct link to IOResult - Effects with Error Handling ⭐" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-result.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/ioresult"
+
+// IOResult[A] - returns Result[A]
+type IOResult[A any] func() result.Result[A]
+
+// Example
+readConfig := func(path string) ioresult.IOResult[Config] {
+  return func() result.Result[Config] {
+      data, err := os.ReadFile(path)
+      if err != nil {
+          return result.Err[Config](err)
+      }
+      
+      var config Config
+      err = json.Unmarshal(data, &config)
+      return result.FromGoError(config, err)
+  }
+}
+
+// Execute
+configResult := readConfig("config.json")()</pre></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Recommendation:</strong> Use IOResult for most effects with error handling.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=working-with-io>Working with<!-- --> <em>IO.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=creating-io>Creating IO<a href=#creating-io class=hash-link aria-label="Direct link to Creating IO" title="Direct link to Creating IO" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Of - Wrap Value<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">Effect - Side Effect<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">IOResult - With Errors</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-of.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Wrap a pure value in IO
+io := io.Of(func() int {
+  return 42
+})
+
+result := io()  // 42</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-effect.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Create IO from side effect
+printIO := io.Of(func() string {
+  fmt.Println("Hello!")
+  return "printed"
+})
+
+printIO()  // Prints and returns "printed"</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-result-create.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Create IOResult
+readFile := func(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+result := readFile("file.txt")()</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=transforming-io>Transforming IO<a href=#transforming-io class=hash-link aria-label="Direct link to Transforming IO" title="Direct link to Transforming IO" translate=no>​</a></h3><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=map---transform-the-result>Map - Transform the Result<a href=#map---transform-the-result class=hash-link aria-label="Direct link to Map - Transform the Result" title="Direct link to Map - Transform the Result" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-map.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Map: transform the value inside
+readNumber := io.Of(func() int { return 42 })
+
+doubled := io.Map(func(x int) int {
+  return x * 2
+})(readNumber)
+
+result := doubled()  // 84</pre></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=chain---sequence-effects>Chain - Sequence Effects<a href=#chain---sequence-effects class=hash-link aria-label="Direct link to Chain - Sequence Effects" title="Direct link to Chain - Sequence Effects" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Chain: sequence two IOs
+readFile := func(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+parseJSON := func(data []byte) ioresult.IOResult[Config] {
+  return func() result.Result[Config] {
+      var config Config
+      err := json.Unmarshal(data, &config)
+      return result.FromGoError(config, err)
+  }
+}
+
+// Chain them
+loadConfig := ioresult.Chain(parseJSON)(readFile("config.json"))
+
+// Execute
+config := loadConfig()</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=composing-io>Composing IO<a href=#composing-io class=hash-link aria-label="Direct link to Composing IO" title="Direct link to Composing IO" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>io-compose.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/function"
+
+// Build pipeline
+loadAndValidate := function.Pipe3(
+  readFile("config.json"),
+  ioresult.Chain(parseJSON),
+  ioresult.Chain(validateConfig),
+)
+
+// Execute when ready
+result := loadAndValidate()</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=examples>Real-world<!-- --> <em>examples.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=example-1-file-operations>Example 1: File Operations<a href=#example-1-file-operations class=hash-link aria-label="Direct link to Example 1: File Operations" title="Direct link to Example 1: File Operations" translate=no>​</a></h3><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>file-without-io.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func processFile(input, output string) error {
+  // Executes immediately
+  data, err := os.ReadFile(input)
+  if err != nil {
+      return err
+  }
+  
+  // Transform
+  processed := transform(data)
+  
+  // Write
+  return os.WriteFile(output, processed, 0644)
+}
+
+// Hard to test
+// Can't delay execution
+// Can't compose</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>file-with-io.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import (
+  "github.com/IBM/fp-go/v2/ioresult"
+  "github.com/IBM/fp-go/v2/function"
+)
+
+func readFile(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+func writeFile(path string) func([]byte) ioresult.IOResult[[]byte] {
+  return func(data []byte) ioresult.IOResult[[]byte] {
+      return func() result.Result[[]byte] {
+          err := os.WriteFile(path, data, 0644)
+          return result.FromGoError(data, err)
+      }
+  }
+}
+
+func transform(data []byte) []byte {
+  // Pure transformation
+  return processed
+}
+
+func processFile(input, output string) ioresult.IOResult[[]byte] {
+  return function.Pipe3(
+      readFile(input),
+      ioresult.Map(transform),
+      ioresult.Chain(writeFile(output)),
+  )
+}
+
+// Easy to test (mock readFile/writeFile)
+// Lazy execution
+// Composable</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=example-2-http-api-call>Example 2: HTTP API Call<a href=#example-2-http-api-call class=hash-link aria-label="Direct link to Example 2: HTTP API Call" title="Direct link to Example 2: HTTP API Call" translate=no>​</a></h3><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>http-without-io.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func fetchUser(id string) (User, error) {
+  // Executes immediately
+  resp, err := http.Get("https://api.example.com/users/" + id)
+  if err != nil {
+      return User{}, err
+  }
+  defer resp.Body.Close()
+  
+  var user User
+  err = json.NewDecoder(resp.Body).Decode(&user)
+  return user, err
+}
+
+// Executes on call
+// Hard to test
+// Can't retry easily</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>http-with-io.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func fetchUser(id string) ioresult.IOResult[User] {
+  return func() result.Result[User] {
+      resp, err := http.Get("https://api.example.com/users/" + id)
+      if err != nil {
+          return result.Err[User](err)
+      }
+      defer resp.Body.Close()
+      
+      var user User
+      err = json.NewDecoder(resp.Body).Decode(&user)
+      return result.FromGoError(user, err)
+  }
+}
+
+// Lazy - doesn't execute until called
+// Easy to test (mock the function)
+// Can retry with ioresult.Retry</pre></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>07</span><h2 class=sectionTitle__6nw id=lazy-evaluation>Lazy<!-- --> <em>evaluation.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=what-is-lazy-evaluation>What is Lazy Evaluation?<a href=#what-is-lazy-evaluation class=hash-link aria-label="Direct link to What is Lazy Evaluation?" title="Direct link to What is Lazy Evaluation?" translate=no>​</a></h3><p><strong>Lazy</strong> means the computation doesn't happen until you explicitly execute it.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>lazy.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Create IO (doesn't execute)
+io := readFile("large-file.txt")
+
+// Still hasn't executed
+time.Sleep(1 * time.Second)
+
+// NOW it executes
+data := io()</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=benefits>Benefits<a href=#benefits class=hash-link aria-label="Direct link to Benefits" title="Direct link to Benefits" translate=no>​</a></h3><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-control-when-effects-happen>1. Control When Effects Happen<a href=#1-control-when-effects-happen class=hash-link aria-label="Direct link to 1. Control When Effects Happen" title="Direct link to 1. Control When Effects Happen" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>control-effects.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Build pipeline
+pipeline := function.Pipe3(
+  readFile("input.txt"),
+  ioresult.Map(process),
+  ioresult.Chain(writeFile("output.txt")),
+)
+
+// Nothing has happened yet!
+
+// Execute when ready
+if shouldProcess {
+  result := pipeline()
+}</pre></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-compose-before-executing>2. Compose Before Executing<a href=#2-compose-before-executing class=hash-link aria-label="Direct link to 2. Compose Before Executing" title="Direct link to 2. Compose Before Executing" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>compose-before-execute.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Build complex pipeline
+step1 := readFile("file1.txt")
+step2 := ioresult.Chain(parseJSON)(step1)
+step3 := ioresult.Chain(validate)(step2)
+step4 := ioresult.Chain(transform)(step3)
+step5 := ioresult.Chain(writeFile("output.txt"))(step4)
+
+// Execute entire pipeline
+result := step5()</pre></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-retry-logic>3. Retry Logic<a href=#3-retry-logic class=hash-link aria-label="Direct link to 3. Retry Logic" title="Direct link to 3. Retry Logic" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>retry.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/ioresult"
+
+// Create effect
+fetchData := func() ioresult.IOResult[Data] {
+  return func() result.Result[Data] {
+      // Network call
+      return result.Ok(data)
+  }
+}
+
+// Retry on failure
+withRetry := ioresult.Retry(
+  3,                    // Max attempts
+  100*time.Millisecond, // Delay
+)(fetchData())
+
+// Execute with retry
+result := withRetry()</pre></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-testing>4. Testing<a href=#4-testing class=hash-link aria-label="Direct link to 4. Testing" title="Direct link to 4. Testing" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>testing-io.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Production
+var readFile = func(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+// Test
+func TestProcessFile(t *testing.T) {
+  // Mock readFile
+  readFile = func(path string) ioresult.IOResult[[]byte] {
+      return func() result.Result[[]byte] {
+          return result.Ok([]byte("test data"))
+      }
+  }
+  
+  // Test
+  result := processFile("input.txt", "output.txt")()
+  assert.True(t, result.IsOk())
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>08</span><h2 class=sectionTitle__6nw id=separation>Separating description from<!-- --> <em>execution.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=the-key-insight>The Key Insight<a href=#the-key-insight class=hash-link aria-label="Direct link to The Key Insight" title="Direct link to The Key Insight" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>separation.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Description (pure)
+var loadConfig = func() ioresult.IOResult[Config] {
+  return function.Pipe3(
+      readFile("config.json"),
+      ioresult.Chain(parseJSON),
+      ioresult.Chain(validate),
+  )
+}
+
+// Execution (impure)
+func main() {
+  // Build description
+  io := loadConfig()
+  
+  // Execute
+  result := io()
+  
+  // Handle result
+  result.Fold(
+      func(err error) {
+          log.Fatal(err)
+      },
+      func(config Config) {
+          // Use config
+      },
+  )
+}</pre></div><p><strong>Benefits:</strong><ul>
+<li class="">Description is pure and testable</li>
+<li class="">Execution is isolated</li>
+<li class="">Clear boundary between pure/impure</li>
+</ul></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>09</span><h2 class=sectionTitle__6nw id=patterns>Common<!-- --> <em>patterns.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-1-sequential-effects>Pattern 1: Sequential Effects<a href=#pattern-1-sequential-effects class=hash-link aria-label="Direct link to Pattern 1: Sequential Effects" title="Direct link to Pattern 1: Sequential Effects" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>sequential.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Execute effects in sequence
+pipeline := function.Pipe4(
+  effect1(),
+  ioresult.Chain(effect2),
+  ioresult.Chain(effect3),
+  ioresult.Chain(effect4),
+)
+
+result := pipeline()</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-2-parallel-effects>Pattern 2: Parallel Effects<a href=#pattern-2-parallel-effects class=hash-link aria-label="Direct link to Pattern 2: Parallel Effects" title="Direct link to Pattern 2: Parallel Effects" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>parallel.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Execute effects in parallel
+var wg sync.WaitGroup
+results := make(chan result.Result[Data], 3)
+
+effects := []ioresult.IOResult[Data]{
+  fetchFromAPI1(),
+  fetchFromAPI2(),
+  fetchFromAPI3(),
+}
+
+for _, effect := range effects {
+  wg.Add(1)
+  go func(e ioresult.IOResult[Data]) {
+      defer wg.Done()
+      results &lt;- e()
+  }(effect)
+}
+
+wg.Wait()
+close(results)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-3-conditional-effects>Pattern 3: Conditional Effects<a href=#pattern-3-conditional-effects class=hash-link aria-label="Direct link to Pattern 3: Conditional Effects" title="Direct link to Pattern 3: Conditional Effects" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>conditional.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Execute effect conditionally
+loadConfig := func(env string) ioresult.IOResult[Config] {
+  if env == "production" {
+      return readFile("/etc/app/config.json")
+  }
+  return readFile("./config.dev.json")
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-4-effect-with-fallback>Pattern 4: Effect with Fallback<a href=#pattern-4-effect-with-fallback class=hash-link aria-label="Direct link to Pattern 4: Effect with Fallback" title="Direct link to Pattern 4: Effect with Fallback" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>fallback.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Try effect, fallback on error
+loadConfig := ioresult.OrElse(func(err error) ioresult.IOResult[Config] {
+  log.Printf("Failed to load config: %v, using defaults", err)
+  return ioresult.Of(result.Ok(defaultConfig))
+})(readFile("config.json"))</pre></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/concepts/composition><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Composition</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/concepts/higher-kinded-types><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Higher-Kinded Types</span></a></nav></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#effects-make-functions-impure class="table-of-contents__link toc-highlight">Effects Make Functions Impure</a><li><a href=#what-is-io class="table-of-contents__link toc-highlight">What is IO?</a><li><a href=#key-properties class="table-of-contents__link toc-highlight">Key Properties</a><li><a href=#io---simple-effects class="table-of-contents__link toc-highlight">IO - Simple Effects</a><li><a href=#iooption---effects-that-might-fail class="table-of-contents__link toc-highlight">IOOption - Effects that Might Fail</a><li><a href=#ioresult---effects-with-error-handling- class="table-of-contents__link toc-highlight">IOResult - Effects with Error Handling ⭐</a><li><a href=#creating-io class="table-of-contents__link toc-highlight">Creating IO</a><li><a href=#transforming-io class="table-of-contents__link toc-highlight">Transforming IO</a><li><a href=#composing-io class="table-of-contents__link toc-highlight">Composing IO</a><li><a href=#example-1-file-operations class="table-of-contents__link toc-highlight">Example 1: File Operations</a><li><a href=#example-2-http-api-call class="table-of-contents__link toc-highlight">Example 2: HTTP API Call</a><li><a href=#what-is-lazy-evaluation class="table-of-contents__link toc-highlight">What is Lazy Evaluation?</a><li><a href=#benefits class="table-of-contents__link toc-highlight">Benefits</a><li><a href=#the-key-insight class="table-of-contents__link toc-highlight">The Key Insight</a><li><a href=#pattern-1-sequential-effects class="table-of-contents__link toc-highlight">Pattern 1: Sequential Effects</a><li><a href=#pattern-2-parallel-effects class="table-of-contents__link toc-highlight">Pattern 2: Parallel Effects</a><li><a href=#pattern-3-conditional-effects class="table-of-contents__link toc-highlight">Pattern 3: Conditional Effects</a><li><a href=#pattern-4-effect-with-fallback class="table-of-contents__link toc-highlight">Pattern 4: Effect with Fallback</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

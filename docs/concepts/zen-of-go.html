@@ -1,0 +1,432 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-concepts/zen-of-go" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>The Zen of Go | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/concepts/zen-of-go /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="The Zen of Go | fp-go"/><meta data-rh=true name=description content="Learn how fp-go aligns with Go's philosophy and when to use functional patterns vs standard Go idioms."/><meta data-rh=true property=og:description content="Learn how fp-go aligns with Go's philosophy and when to use functional patterns vs standard Go idioms."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/concepts/zen-of-go /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/zen-of-go hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/zen-of-go hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/concepts/zen-of-go","name":"The Zen of Go","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/concepts/zen-of-go>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/concepts/zen-of-go>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Migration</span><span class=ct_cC82>03</span></h5><a class=item_eWIL href=/fp-go/docs/migration><span class=num_TgSU>06</span><span class=title_kV1V>Migration Guide</span></a><a class=item_eWIL href=/fp-go/docs/migration/v1-to-v2><span class=num_TgSU>07</span><span class=title_kV1V>v1 to v2 Migration</span></a><a class=item_eWIL href=/fp-go/docs/migration/interop><span class=num_TgSU>08</span><span class=title_kV1V>v1 and v2 Interop</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Concepts</span><span class=ct_cC82>06</span></h5><a class=item_eWIL href=/fp-go/docs/concepts/pure-functions><span class=num_TgSU>09</span><span class=title_kV1V>Pure Functions</span></a><a class=item_eWIL href=/fp-go/docs/concepts/monads><span class=num_TgSU>10</span><span class=title_kV1V>Monads</span></a><a class=item_eWIL href=/fp-go/docs/concepts/composition><span class=num_TgSU>11</span><span class=title_kV1V>Composition</span></a><a class=item_eWIL href=/fp-go/docs/concepts/effects-and-io><span class=num_TgSU>12</span><span class=title_kV1V>Effects and IO</span></a><a class=item_eWIL href=/fp-go/docs/concepts/higher-kinded-types><span class=num_TgSU>13</span><span class=title_kV1V>Higher-Kinded Types</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/concepts/zen-of-go><span class=num_TgSU>14</span><span class=title_kV1V>The Zen of Go</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>08</span></h5><a class=item_eWIL href=/fp-go/docs/intro><span class=num_TgSU>01</span><span class=title_kV1V>What is fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/installation><span class=num_TgSU>02</span><span class=title_kV1V>Installation</span></a><a class=item_eWIL href=/fp-go/docs/quickstart><span class=num_TgSU>03</span><span class=title_kV1V>5-Minute Quickstart</span></a><a class=item_eWIL href=/fp-go/docs/why-fp-go><span class=num_TgSU>04</span><span class=title_kV1V>Why fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/comparison><span class=num_TgSU>05</span><span class=title_kV1V>Comparison with Other Libraries</span></a><a class=item_eWIL href=/fp-go/docs/faq><span class=num_TgSU>15</span><span class=title_kV1V>Frequently Asked Questions</span></a><a class=item_eWIL href=/fp-go/docs/glossary><span class=num_TgSU>16</span><span class=title_kV1V>Glossary</span></a><a class=item_eWIL href=/fp-go/docs/design-kit><span class=num_TgSU>17</span><span class=title_kV1V>Content design kit</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Concepts</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>The Zen of Go</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Concepts · 06 / 06</div><h1 class=headTitle_xWjG>The Zen of<!-- --> <em>Go.</em></h1><p class=lede_Ltdj>Balance functional programming with Go's philosophy. Learn when to use fp-go patterns and when standard Go is better.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>// Difficulty</span><span class=metaV_zAp5>Intermediate</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Reading time</span><span class=metaV_zAp5>14 min · 8 sections</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Prereqs</span><span class=metaV_zAp5>All previous concepts</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap up_ip1p"><div class=tldrK_kP7m>// Philosophy</div><div class="tldrV_gUPe tldrVProse_sV_2">fp-go <em>complements</em> Go, doesn't replace it.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// When to use</div><div class="tldrV_gUPe tldrVProse_sV_2">Complex errors, optional values, <em>data transforms</em>.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// When not to</div><div class="tldrV_gUPe tldrVProse_sV_2">Simple ops, hot paths, <em>team unfamiliar</em>.</div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=philosophy>Go's<!-- --> <em>philosophy.</em></h2></div></div><p>Go values:<ol>
+<li class=""><strong>Simplicity</strong> - Easy to read and understand</li>
+<li class=""><strong>Clarity</strong> - Explicit over implicit</li>
+<li class=""><strong>Pragmatism</strong> - Practical over theoretical</li>
+<li class=""><strong>Composition</strong> - Small pieces that work together</li>
+<li class=""><strong>Concurrency</strong> - Built-in support for concurrent programming</li>
+</ol><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>fp-go embraces these values.</strong></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=go-first>fp-go is<!-- --> <em>Go-first.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=not-a-replacement>Not a Replacement<a href=#not-a-replacement class=hash-link aria-label="Direct link to Not a Replacement" title="Direct link to Not a Replacement" translate=no>​</a></h3><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>replace-all.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Don't replace all Go code with fp-go
+func processUser(id string) result.Result[User] {
+  return function.Pipe10(
+      step1, step2, step3, step4, step5,
+      step6, step7, step8, step9, step10,
+  )
+}</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>use-where-valuable.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Use fp-go where it adds value
+func processUser(id string) (User, error) {
+  user, err := fetchUser(id)
+  if err != nil {
+      return User{}, err
+  }
+  
+  // Use fp-go for complex transformations
+  validated := result.Chain(validateUser)(result.Ok(user))
+  
+  return validated.Fold(
+      func(err error) (User, error) { return User{}, err },
+      func(u User) (User, error) { return u, nil },
+  )
+}</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=complement-dont-replace>Complement, Don't Replace<a href=#complement-dont-replace class=hash-link aria-label="Direct link to Complement, Don't Replace" title="Direct link to Complement, Don't Replace" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>complement.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Standard Go for simple cases
+func add(a, b int) int {
+  return a + b
+}
+
+// fp-go for complex error handling
+func processOrder(id string) result.Result[Order] {
+  return function.Pipe3(
+      fetchOrder(id),
+      result.Chain(validateOrder),
+      result.Chain(enrichOrder),
+  )
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=when-to-use>When to use<!-- --> <em>fp-go.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=-use-fp-go-when>✅ Use fp-go When:<a href=#-use-fp-go-when class=hash-link aria-label="Direct link to ✅ Use fp-go When:" title="Direct link to ✅ Use fp-go When:" translate=no>​</a></h3><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-complex-error-handling>1. Complex Error Handling<a href=#1-complex-error-handling class=hash-link aria-label="Direct link to 1. Complex Error Handling" title="Direct link to 1. Complex Error Handling" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>repetitive-errors.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func processData(input string) (Output, error) {
+  parsed, err := parse(input)
+  if err != nil {
+      return Output{}, err
+  }
+  
+  validated, err := validate(parsed)
+  if err != nil {
+      return Output{}, err
+  }
+  
+  transformed, err := transform(validated)
+  if err != nil {
+      return Output{}, err
+  }
+  
+  return transformed, nil
+}
+
+// Repetitive error checking</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>clean-pipeline.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func processData(input string) result.Result[Output] {
+  return function.Pipe3(
+      parse(input),
+      result.Chain(validate),
+      result.Chain(transform),
+  )
+}
+
+// Clean and composable</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-optional-values>2. Optional Values<a href=#2-optional-values class=hash-link aria-label="Direct link to 2. Optional Values" title="Direct link to 2. Optional Values" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>nil-checks.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func findUser(id string) *User {
+  // nil means not found
+  return db.FindByID(id)
+}
+
+// Lots of nil checks
+user := findUser("123")
+if user != nil {
+  email := user.Email
+  if email != "" {
+      // Use email
+  }
+}</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>option-chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func findUser(id string) option.Option[User] {
+  user := db.FindByID(id)
+  if user == nil {
+      return option.None[User]()
+  }
+  return option.Some(*user)
+}
+
+// Chain operations
+email := function.Pipe2(
+  findUser("123"),
+  option.Chain(getEmail),
+)</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-data-transformations>3. Data Transformations<a href=#3-data-transformations class=hash-link aria-label="Direct link to 3. Data Transformations" title="Direct link to 3. Data Transformations" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>imperative-transform.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func processUsers(users []User) []UserDTO {
+  result := make([]UserDTO, 0, len(users))
+  for _, user := range users {
+      if user.Active {
+          dto := UserDTO{
+              ID:   user.ID,
+              Name: strings.ToUpper(user.Name),
+          }
+          result = append(result, dto)
+      }
+  }
+  return result
+}</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>functional-transform.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/array"
+
+func processUsers(users []User) []UserDTO {
+  return function.Pipe2(
+      array.Filter(func(u User) bool { return u.Active }),
+      array.Map(toDTO),
+  )(users)
+}
+
+func toDTO(u User) UserDTO {
+  return UserDTO{
+      ID:   u.ID,
+      Name: strings.ToUpper(u.Name),
+  }
+}</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-composable-pipelines>4. Composable Pipelines<a href=#4-composable-pipelines class=hash-link aria-label="Direct link to 4. Composable Pipelines" title="Direct link to 4. Composable Pipelines" translate=no>​</a></h4><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>pipelines.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Build reusable pipelines
+var processUser = function.Flow3(
+  normalize,
+  validate,
+  enrich,
+)
+
+// Use in different contexts
+user1 := processUser(rawUser1)
+user2 := processUser(rawUser2)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=-dont-use-fp-go-when>❌ Don't Use fp-go When:<a href=#-dont-use-fp-go-when class=hash-link aria-label="Direct link to ❌ Don't Use fp-go When:" title="Direct link to ❌ Don't Use fp-go When:" translate=no>​</a></h3><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-simple-operations>1. Simple Operations<a href=#1-simple-operations class=hash-link aria-label="Direct link to 1. Simple Operations" title="Direct link to 1. Simple Operations" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>overkill.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Overkill
+result := result.Map(func(x int) int {
+  return x + 1
+})(result.Ok(5))</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>simple-go.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Just use standard Go
+x := 5 + 1</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-performance-critical-code>2. Performance-Critical Code<a href=#2-performance-critical-code class=hash-link aria-label="Direct link to 2. Performance-Critical Code" title="Direct link to 2. Performance-Critical Code" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>hot-path-fp.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Hot path with millions of calls
+for i := 0; i &lt; 1000000; i++ {
+  result := option.Map(transform)(opt)
+}</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>hot-path-go.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Use standard Go for hot paths
+for i := 0; i &lt; 1000000; i++ {
+  if opt.IsSome() {
+      value := transform(opt.Value())
+  }
+}</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-team-unfamiliar-with-fp>3. Team Unfamiliar with FP<a href=#3-team-unfamiliar-with-fp class=hash-link aria-label="Direct link to 3. Team Unfamiliar with FP" title="Direct link to 3. Team Unfamiliar with FP" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>confusing.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Confusing for team
+var pipeline = function.Flow5(
+  step1, step2, step3, step4, step5,
+)</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>gradual.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Start simple, introduce gradually
+func process(input Input) Output {
+  step1Result := step1(input)
+  step2Result := step2(step1Result)
+  // ...
+  return step5Result
+}</pre></div></div></div></div><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-standard-go-is-clearer>4. Standard Go is Clearer<a href=#4-standard-go-is-clearer class=hash-link aria-label="Direct link to 4. Standard Go is Clearer" title="Direct link to 4. Standard Go is Clearer" translate=no>​</a></h4><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>forced-fp.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Forced FP
+result := option.Fold(
+  func() string { return "" },
+  func(s string) string { return s },
+)(opt)</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>clear-go.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Clear Go
+var result string
+if opt.IsSome() {
+  result = opt.Value()
+}</pre></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=balancing>Balancing FP and<!-- --> <em>Go idioms.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-1-fp-core-go-boundaries>Pattern 1: FP Core, Go Boundaries<a href=#pattern-1-fp-core-go-boundaries class=hash-link aria-label="Direct link to Pattern 1: FP Core, Go Boundaries" title="Direct link to Pattern 1: FP Core, Go Boundaries" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>fp-core-go-boundaries.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Pure FP core
+func processOrder(order Order) result.Result[Order] {
+  return function.Pipe3(
+      result.Ok(order),
+      result.Chain(validateOrder),
+      result.Chain(enrichOrder),
+  )
+}
+
+// Go-style API
+func ProcessOrder(order Order) (Order, error) {
+  result := processOrder(order)
+  return result.Fold(
+      func(err error) (Order, error) { return Order{}, err },
+      func(o Order) (Order, error) { return o, nil },
+  )
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-2-gradual-adoption>Pattern 2: Gradual Adoption<a href=#pattern-2-gradual-adoption class=hash-link aria-label="Direct link to Pattern 2: Gradual Adoption" title="Direct link to Pattern 2: Gradual Adoption" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>gradual-adoption.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Phase 1: Start with error handling
+func fetchUser(id string) result.Result[User] {
+  user, err := db.FindByID(id)
+  return result.FromGoError(user, err)
+}
+
+// Phase 2: Add composition
+func processUser(id string) result.Result[User] {
+  return function.Pipe2(
+      fetchUser(id),
+      result.Chain(validateUser),
+  )
+}
+
+// Phase 3: Full pipeline
+func processUser(id string) result.Result[UserDTO] {
+  return function.Pipe4(
+      fetchUser(id),
+      result.Chain(validateUser),
+      result.Chain(enrichUser),
+      result.Map(toDTO),
+  )
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-3-hybrid-approach>Pattern 3: Hybrid Approach<a href=#pattern-3-hybrid-approach class=hash-link aria-label="Direct link to Pattern 3: Hybrid Approach" title="Direct link to Pattern 3: Hybrid Approach" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>hybrid.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Mix FP and standard Go
+func processUsers(users []User) ([]UserDTO, error) {
+  // Use fp-go for transformation
+  active := array.Filter(func(u User) bool {
+      return u.Active
+  })(users)
+  
+  // Standard Go for complex logic
+  var dtos []UserDTO
+  for _, user := range active {
+      // Complex validation
+      if err := complexValidation(user); err != nil {
+          return nil, err
+      }
+      
+      // Use fp-go for transformation
+      dto := toDTO(user)
+      dtos = append(dtos, dto)
+  }
+  
+  return dtos, nil
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=go-idioms>Go idioms with<!-- --> <em>fp-go.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=idiom-1-errors-are-values>Idiom 1: Errors are Values<a href=#idiom-1-errors-are-values class=hash-link aria-label="Direct link to Idiom 1: Errors are Values" title="Direct link to Idiom 1: Errors are Values" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>errors-as-values.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Go idiom: return errors
+func fetchUser(id string) (User, error) {
+  // ...
+}
+
+// fp-go: errors in Result
+func fetchUser(id string) result.Result[User] {
+  // ...
+}
+
+// Both are valid - choose based on context</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=idiom-2-accept-interfaces-return-structs>Idiom 2: Accept Interfaces, Return Structs<a href=#idiom-2-accept-interfaces-return-structs class=hash-link aria-label="Direct link to Idiom 2: Accept Interfaces, Return Structs" title="Direct link to Idiom 2: Accept Interfaces, Return Structs" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>interfaces.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Go idiom
+type UserService interface {
+  GetUser(id string) (User, error)
+}
+
+type userService struct {
+  db Database
+}
+
+func (s *userService) GetUser(id string) (User, error) {
+  // Can use fp-go internally
+  result := function.Pipe2(
+      s.fetchUser(id),
+      result.Chain(s.validateUser),
+  )
+  
+  // Return Go-style
+  return result.Fold(
+      func(err error) (User, error) { return User{}, err },
+      func(u User) (User, error) { return u, nil },
+  )
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=idiom-3-make-zero-values-useful>Idiom 3: Make Zero Values Useful<a href=#idiom-3-make-zero-values-useful class=hash-link aria-label="Direct link to Idiom 3: Make Zero Values Useful" title="Direct link to Idiom 3: Make Zero Values Useful" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>zero-values.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Go idiom: zero values work
+type Config struct {
+  Port    int    // 0 is valid
+  Host    string // "" is valid
+  Timeout time.Duration // 0 is valid
+}
+
+// fp-go: use Option for truly optional values
+type Config struct {
+  Port    int
+  Host    string
+  Timeout option.Option[time.Duration] // None means use default
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=idiom-4-keep-packages-focused>Idiom 4: Keep Packages Focused<a href=#idiom-4-keep-packages-focused class=hash-link aria-label="Direct link to Idiom 4: Keep Packages Focused" title="Direct link to Idiom 4: Keep Packages Focused" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>focused-packages.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Go idiom: small, focused packages
+package user
+
+// Don't mix everything
+// ❌ user/fp.go, user/imperative.go
+
+// ✅ Use fp-go where it helps
+func (s *Service) GetUser(id string) (User, error) {
+  // Use fp-go internally
+  result := s.fetchAndValidate(id)
+  
+  // Return Go-style
+  return result.Fold(
+      func(err error) (User, error) { return User{}, err },
+      func(u User) (User, error) { return u, nil },
+  )
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=testing>Testing with<!-- --> <em>fp-go.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=test-pure-functions>Test Pure Functions<a href=#test-pure-functions class=hash-link aria-label="Direct link to Test Pure Functions" title="Direct link to Test Pure Functions" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>test-pure.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Pure functions are easy to test
+func TestNormalizeUser(t *testing.T) {
+  user := User{Name: "  JOHN  "}
+  normalized := normalizeUser(user)
+  
+  assert.Equal(t, "john", normalized.Name)
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=test-pipelines>Test Pipelines<a href=#test-pipelines class=hash-link aria-label="Direct link to Test Pipelines" title="Direct link to Test Pipelines" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>test-pipelines.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Test the pipeline structure
+func TestProcessUser(t *testing.T) {
+  // Mock dependencies
+  fetchUser = func(id string) result.Result[User] {
+      return result.Ok(User{ID: id})
+  }
+  
+  // Test pipeline
+  result := processUser("123")
+  
+  assert.True(t, result.IsOk())
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=test-with-table-tests-go-idiom>Test with Table Tests (Go Idiom)<a href=#test-with-table-tests-go-idiom class=hash-link aria-label="Direct link to Test with Table Tests (Go Idiom)" title="Direct link to Test with Table Tests (Go Idiom)" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>table-tests.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func TestValidateUser(t *testing.T) {
+  tests := []struct {
+      name    string
+      user    User
+      wantErr bool
+  }{
+      {"valid user", User{Email: "test@example.com"}, false},
+      {"invalid email", User{Email: "invalid"}, true},
+      {"empty email", User{Email: ""}, true},
+  }
+  
+  for _, tt := range tests {
+      t.Run(tt.name, func(t *testing.T) {
+          result := validateUser(tt.user)
+          
+          if tt.wantErr {
+              assert.True(t, result.IsErr())
+          } else {
+              assert.True(t, result.IsOk())
+          }
+      })
+  }
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>07</span><h2 class=sectionTitle__6nw id=performance>Performance<!-- --> <em>considerations.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=measure-first>Measure First<a href=#measure-first class=hash-link aria-label="Direct link to Measure First" title="Direct link to Measure First" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>benchmark.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Don't assume - benchmark
+func BenchmarkStandard(b *testing.B) {
+  for i := 0; i &lt; b.N; i++ {
+      _ = standardApproach()
+  }
+}
+
+func BenchmarkFPGo(b *testing.B) {
+  for i := 0; i &lt; b.N; i++ {
+      _ = fpgoApproach()
+  }
+}
+
+// Then decide based on results</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=use-idiomatic-packages>Use Idiomatic Packages<a href=#use-idiomatic-packages class=hash-link aria-label="Direct link to Use Idiomatic Packages" title="Direct link to Use Idiomatic Packages" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>idiomatic.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// fp-go provides idiomatic (faster) versions
+import "github.com/IBM/fp-go/v2/array/idiomatic"
+
+// 2-32x faster for array operations
+filtered := idiomatic.Filter(predicate)(array)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=optimize-hot-paths>Optimize Hot Paths<a href=#optimize-hot-paths class=hash-link aria-label="Direct link to Optimize Hot Paths" title="Direct link to Optimize Hot Paths" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>optimize-hot-paths.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Cold path: use fp-go for clarity
+func processConfig(config Config) result.Result[Config] {
+  return function.Pipe3(
+      result.Ok(config),
+      result.Chain(validate),
+      result.Chain(enrich),
+  )
+}
+
+// Hot path: optimize
+func processRequest(req Request) Response {
+  // Direct implementation for performance
+  if !isValid(req) {
+      return errorResponse
+  }
+  return successResponse
+}</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>08</span><h2 class=sectionTitle__6nw id=team-adoption>Team<!-- --> <em>adoption.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=start-small>Start Small<a href=#start-small class=hash-link aria-label="Direct link to Start Small" title="Direct link to Start Small" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>start-small.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Phase 1: Use Result for error handling
+func fetchUser(id string) result.Result[User] {
+  user, err := db.FindByID(id)
+  return result.FromGoError(user, err)
+}
+
+// Phase 2: Add Option for optional values
+func findConfig(key string) option.Option[string] {
+  // ...
+}
+
+// Phase 3: Introduce composition
+func processUser(id string) result.Result[User] {
+  return function.Pipe2(
+      fetchUser(id),
+      result.Chain(validateUser),
+  )
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=provide-training>Provide Training<a href=#provide-training class=hash-link aria-label="Direct link to Provide Training" title="Direct link to Provide Training" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>training.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Create examples for your team
+// examples/user_processing.go
+
+// Example 1: Simple Result usage
+func example1() {
+  result := fetchUser("123")
+  result.Fold(
+      func(err error) { fmt.Println("Error:", err) },
+      func(user User) { fmt.Println("User:", user) },
+  )
+}
+
+// Example 2: Chaining operations
+func example2() {
+  result := function.Pipe2(
+      fetchUser("123"),
+      result.Chain(validateUser),
+  )
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=set-guidelines>Set Guidelines<a href=#set-guidelines class=hash-link aria-label="Direct link to Set Guidelines" title="Direct link to Set Guidelines" translate=no>​</a></h3><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Document when to use fp-go:</strong><p>Use fp-go for:<ul>
+<li class="">Complex error handling (3+ sequential operations)</li>
+<li class="">Optional values (instead of nil pointers)</li>
+<li class="">Data transformations (map, filter, reduce)</li>
+</ul><p>Use standard Go for:<ul>
+<li class="">Simple operations</li>
+<li class="">Performance-critical code</li>
+<li class="">Public APIs (convert at boundary)</li>
+</ul></div></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/concepts/higher-kinded-types><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Higher-Kinded Types</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/faq><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Frequently Asked Questions</span></a></nav></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#not-a-replacement class="table-of-contents__link toc-highlight">Not a Replacement</a><li><a href=#complement-dont-replace class="table-of-contents__link toc-highlight">Complement, Don't Replace</a><li><a href=#-use-fp-go-when class="table-of-contents__link toc-highlight">✅ Use fp-go When:</a><li><a href=#-dont-use-fp-go-when class="table-of-contents__link toc-highlight">❌ Don't Use fp-go When:</a><li><a href=#pattern-1-fp-core-go-boundaries class="table-of-contents__link toc-highlight">Pattern 1: FP Core, Go Boundaries</a><li><a href=#pattern-2-gradual-adoption class="table-of-contents__link toc-highlight">Pattern 2: Gradual Adoption</a><li><a href=#pattern-3-hybrid-approach class="table-of-contents__link toc-highlight">Pattern 3: Hybrid Approach</a><li><a href=#idiom-1-errors-are-values class="table-of-contents__link toc-highlight">Idiom 1: Errors are Values</a><li><a href=#idiom-2-accept-interfaces-return-structs class="table-of-contents__link toc-highlight">Idiom 2: Accept Interfaces, Return Structs</a><li><a href=#idiom-3-make-zero-values-useful class="table-of-contents__link toc-highlight">Idiom 3: Make Zero Values Useful</a><li><a href=#idiom-4-keep-packages-focused class="table-of-contents__link toc-highlight">Idiom 4: Keep Packages Focused</a><li><a href=#test-pure-functions class="table-of-contents__link toc-highlight">Test Pure Functions</a><li><a href=#test-pipelines class="table-of-contents__link toc-highlight">Test Pipelines</a><li><a href=#test-with-table-tests-go-idiom class="table-of-contents__link toc-highlight">Test with Table Tests (Go Idiom)</a><li><a href=#measure-first class="table-of-contents__link toc-highlight">Measure First</a><li><a href=#use-idiomatic-packages class="table-of-contents__link toc-highlight">Use Idiomatic Packages</a><li><a href=#optimize-hot-paths class="table-of-contents__link toc-highlight">Optimize Hot Paths</a><li><a href=#start-small class="table-of-contents__link toc-highlight">Start Small</a><li><a href=#provide-training class="table-of-contents__link toc-highlight">Provide Training</a><li><a href=#set-guidelines class="table-of-contents__link toc-highlight">Set Guidelines</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

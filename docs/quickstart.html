@@ -1,0 +1,263 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-quickstart" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>5-Minute Quickstart | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/quickstart /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="5-Minute Quickstart | fp-go"/><meta data-rh=true name=description content="Install fp-go, write your first program, and learn the core composition patterns in 5 minutes."/><meta data-rh=true property=og:description content="Install fp-go, write your first program, and learn the core composition patterns in 5 minutes."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/quickstart /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/quickstart hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/quickstart hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/quickstart","name":"5-Minute Quickstart","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/quickstart>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/quickstart>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Migration</span><span class=ct_cC82>03</span></h5><a class=item_eWIL href=/fp-go/docs/migration><span class=num_TgSU>06</span><span class=title_kV1V>Migration Guide</span></a><a class=item_eWIL href=/fp-go/docs/migration/v1-to-v2><span class=num_TgSU>07</span><span class=title_kV1V>v1 to v2 Migration</span></a><a class=item_eWIL href=/fp-go/docs/migration/interop><span class=num_TgSU>08</span><span class=title_kV1V>v1 and v2 Interop</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Concepts</span><span class=ct_cC82>06</span></h5><a class=item_eWIL href=/fp-go/docs/concepts/pure-functions><span class=num_TgSU>09</span><span class=title_kV1V>Pure Functions</span></a><a class=item_eWIL href=/fp-go/docs/concepts/monads><span class=num_TgSU>10</span><span class=title_kV1V>Monads</span></a><a class=item_eWIL href=/fp-go/docs/concepts/composition><span class=num_TgSU>11</span><span class=title_kV1V>Composition</span></a><a class=item_eWIL href=/fp-go/docs/concepts/effects-and-io><span class=num_TgSU>12</span><span class=title_kV1V>Effects and IO</span></a><a class=item_eWIL href=/fp-go/docs/concepts/higher-kinded-types><span class=num_TgSU>13</span><span class=title_kV1V>Higher-Kinded Types</span></a><a class=item_eWIL href=/fp-go/docs/concepts/zen-of-go><span class=num_TgSU>14</span><span class=title_kV1V>The Zen of Go</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>08</span></h5><a class=item_eWIL href=/fp-go/docs/intro><span class=num_TgSU>01</span><span class=title_kV1V>What is fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/installation><span class=num_TgSU>02</span><span class=title_kV1V>Installation</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/quickstart><span class=num_TgSU>03</span><span class=title_kV1V>5-Minute Quickstart</span></a><a class=item_eWIL href=/fp-go/docs/why-fp-go><span class=num_TgSU>04</span><span class=title_kV1V>Why fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/comparison><span class=num_TgSU>05</span><span class=title_kV1V>Comparison with Other Libraries</span></a><a class=item_eWIL href=/fp-go/docs/faq><span class=num_TgSU>15</span><span class=title_kV1V>Frequently Asked Questions</span></a><a class=item_eWIL href=/fp-go/docs/glossary><span class=num_TgSU>16</span><span class=title_kV1V>Glossary</span></a><a class=item_eWIL href=/fp-go/docs/design-kit><span class=num_TgSU>17</span><span class=title_kV1V>Content design kit</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>5-Minute Quickstart</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Getting started · Section 03 / 03</div><h1 class=headTitle_xWjG>5-minute<!-- --> <em>quickstart.</em></h1><p class=lede_Ltdj>Install fp-go, write your first program, and learn the core composition patterns — Pipe, Map, Chain, GetOrElse — in one sitting.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>// Version</span><span class=metaV_zAp5>v2.2.82 <span class=pill_Lzl6>LATEST</span></span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Go required</span><span class=metaV_zAp5>1.24+ (v2)</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Reading time</span><span class=metaV_zAp5>5 min · 5 steps</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap "><div class=tldrK_kP7m>// You'll learn</div><div class="tldrV_gUPe ">5<small>patterns</small></div><div class=tldrD_kfCX>Pipe, Map, Chain, GetOrElse, automatic error propagation.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// Prereqs</div><div class="tldrV_gUPe tldrVProse_sV_2">Go <em>1.24+</em> and basic Go familiarity.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// You'll build</div><div class="tldrV_gUPe tldrVProse_sV_2">A safe divider and a <em>composable</em> calculator.</div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=prereqs>Prerequisites</h2></div><span class=sectionTag_se22>Difficulty · Beginner</span></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Before you start.</strong><ul><li><strong>Go 1.24+</strong> for v2 (recommended)<li><strong>Go 1.18+</strong> for v1 (legacy)<li>Basic understanding of Go</ul></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=install>Install<!-- --> <em>fp-go.</em></h2></div></div><p class=sectionLede_yuVk>Choose your version. v2 is recommended for any new project.<div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">v2 (Recommended)<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">v1 (Legacy)</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>shell</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+# Initialize your Go module (if not already done)
+go mod init myapp
+
+# Install fp-go v2
+go get github.com/IBM/fp-go/v2</pre></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Why v2.</strong><ul><li>Latest features (Result, Effect, idiomatic packages)<li>Better type inference<li>Actively maintained<li>Requires Go 1.24+</ul></div></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>shell</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+# Initialize your Go module (if not already done)
+go mod init myapp
+
+# Install fp-go v1
+go get github.com/IBM/fp-go</pre></div><div class="callout_yWfv warn_PIJZ"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 23a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 16 23zM15 13h2v8h-2z"/><path d="M28.7 26.31L17.36 4.27a1.51 1.51 0 0 0-2.72 0L3.3 26.31a1.5 1.5 0 0 0 1.36 2.19h22.69a1.5 1.5 0 0 0 1.35-2.19z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>When to choose v1.</strong><ul><li>Stuck on Go 1.18–1.23<li>Existing v1 codebase<li>Need Writer monad (v1 only)</ul></div></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=first-program>Your first<!-- --> <em>program.</em></h2></div></div><p class=sectionLede_yuVk>A safe divider. Compare the three approaches side-by-side.<div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">Without fp-go<li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">With v2<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With v1</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>main.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "errors"
+  "fmt"
+)
+
+func divide(a, b int) (int, error) {
+  if b == 0 {
+      return 0, errors.New("division by zero")
+  }
+  return a / b, nil
+}
+
+func main() {
+  // Manual error handling
+  result, err := divide(10, 2)
+  if err != nil {
+      fmt.Println("Error:", err)
+      return
+  }
+
+  doubled := result * 2
+  fmt.Println("Result:", doubled) // Output: Result: 10
+
+  // What if we want to chain more operations?
+  // More if err != nil checks...
+}</pre></div><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span><span class=comparePill_fmmx>problems</span></div><div class=compareBody_hP62><p>Repetitive error checking.<p>Hard to compose operations.<p>Error handling mixed with business logic.</div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>fp-go</span><span class=comparePill_fmmx>see right tab</span></div><div class=compareBody_hP62><p>Automatic error propagation.<p>Composable pipelines.<p>Business logic stays clear.</div></div></div></div><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>main.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "errors"
+  "fmt"
+  "github.com/IBM/fp-go/v2/function"
+  "github.com/IBM/fp-go/v2/result"
+)
+
+// Pure function that returns Result instead of (value, error)
+func divide(a, b int) result.Result[int] {
+  if b == 0 {
+      return result.Err[int](errors.New("division by zero"))
+  }
+  return result.Ok(a / b)
+}
+
+func main() {
+  // Compose operations with automatic error handling
+  finalResult := function.Pipe2(
+      divide(10, 2),
+      result.Map(func(x int) int { return x * 2 }),
+      result.GetOrElse(func() int { return 0 }),
+  )
+
+  fmt.Println("Result:", finalResult) // Output: Result: 10
+
+  // Error case is handled automatically
+  errorResult := function.Pipe2(
+      divide(10, 0), // Returns Err
+      result.Map(func(x int) int { return x * 2 }), // Skipped!
+      result.GetOrElse(func() int { return 0 }), // Returns default
+  )
+
+  fmt.Println("Error result:", errorResult) // Output: Error result: 0
+}</pre></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Benefits.</strong><p>No repetitive error checking. Easy composition. Errors propagate automatically. Business logic stays prominent.</div></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>main.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "errors"
+  "fmt"
+  "github.com/IBM/fp-go/either"
+  "github.com/IBM/fp-go/function"
+)
+
+// Pure function that returns Either instead of (value, error)
+func divide(a, b int) either.Either[error, int] {
+  if b == 0 {
+      return either.Left[int](errors.New("division by zero"))
+  }
+  return either.Right[error](a / b)
+}
+
+func main() {
+  // Compose operations with automatic error handling
+  finalResult := function.Pipe2(
+      divide(10, 2),
+      either.Map(func(x int) int { return x * 2 }),
+      either.GetOrElse(func() int { return 0 }),
+  )
+
+  fmt.Println("Result:", finalResult) // Output: Result: 10
+
+  // Error case is handled automatically
+  errorResult := function.Pipe2(
+      divide(10, 0), // Returns Left
+      either.Map(func(x int) int { return x * 2 }), // Skipped!
+      either.GetOrElse(func() int { return 0 }), // Returns default
+  )
+
+  fmt.Println("Error result:", errorResult) // Output: Error result: 0
+}</pre></div><div class="callout_yWfv warn_PIJZ"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 23a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 16 23zM15 13h2v8h-2z"/><path d="M28.7 26.31L17.36 4.27a1.51 1.51 0 0 0-2.72 0L3.3 26.31a1.5 1.5 0 0 0 1.36 2.19h22.69a1.5 1.5 0 0 0 1.35-2.19z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Note.</strong><p>v1 uses <code>Either[error, A]</code> instead of v2's <code>Result[A]</code>.</div></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=run-it>Run it<a href=#run-it class=hash-link aria-label="Direct link to Run it" title="Direct link to Run it" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>shell</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>go run main.go</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>output</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+Result: 10
+Error result: 0</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=pattern>Understanding the<!-- --> <em>pattern.</em></h2></div></div><p class=sectionLede_yuVk>Four building blocks: Result/Either return types, Pipe to compose, Map to transform, GetOrElse to extract.<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-pure-functions-return-results>1. Pure functions return results<a href=#1-pure-functions-return-results class=hash-link aria-label="Direct link to 1. Pure functions return results" title="Direct link to 1. Pure functions return results" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">v2<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">v1</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>signature.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Instead of this:
+func divide(a, b int) (int, error)
+
+// We write this:
+func divide(a, b int) result.Result[int]</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>signature.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Instead of this:
+func divide(a, b int) (int, error)
+
+// We write this:
+func divide(a, b int) either.Either[error, int]</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-compose-with-pipe>2. Compose with Pipe<a href=#2-compose-with-pipe class=hash-link aria-label="Direct link to 2. Compose with Pipe" title="Direct link to 2. Compose with Pipe" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>pipe.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result := function.Pipe2(
+  operation1(),      // Returns Result[A]
+  operation2,        // A -> Result[B]
+  operation3,        // B -> C
+)</pre></div><p><strong>Pipe</strong> feeds the output of one function into the next, automatically handling errors.<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-transform-with-map>3. Transform with Map<a href=#3-transform-with-map class=hash-link aria-label="Direct link to 3. Transform with Map" title="Direct link to 3. Transform with Map" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">v2<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">v1</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>map.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result.Map(func(x int) int {
+  return x * 2
+})</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>map.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+either.Map(func(x int) int {
+  return x * 2
+})</pre></div></div></div></div><p><strong>Map</strong> transforms the value inside a Result/Either — but only if it's successful. Errors pass through unchanged.<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-extract-with-getorelse>4. Extract with GetOrElse<a href=#4-extract-with-getorelse class=hash-link aria-label="Direct link to 4. Extract with GetOrElse" title="Direct link to 4. Extract with GetOrElse" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">v2<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">v1</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>getorelse.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result.GetOrElse(func() int {
+  return 0
+})</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>getorelse.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+either.GetOrElse(func() int {
+  return 0
+})</pre></div></div></div></div><p><strong>GetOrElse</strong> extracts the value or provides a default if there was an error.</section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=complex>A more complex<!-- --> <em>example.</em></h2></div></div><p class=sectionLede_yuVk>Chain multiple operations into one pipeline. Failure in any step short-circuits the rest.<div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">v2<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">v1</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>calculator.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "errors"
+  "fmt"
+  "github.com/IBM/fp-go/v2/function"
+  "github.com/IBM/fp-go/v2/result"
+)
+
+func divide(a, b int) result.Result[int] {
+  if b == 0 {
+      return result.Err[int](errors.New("division by zero"))
+  }
+  return result.Ok(a / b)
+}
+
+func sqrt(n int) result.Result[int] {
+  if n &lt; 0 {
+      return result.Err[int](errors.New("cannot sqrt negative number"))
+  }
+  // Simplified integer sqrt
+  result := 0
+  for result*result &lt;= n {
+      result++
+  }
+  return result.Ok(result - 1)
+}
+
+func calculate(a, b, c int) result.Result[string] {
+  return function.Pipe3(
+      divide(a, b),                                    // 100 / 4 = 25
+      result.Chain(func(x int) result.Result[int] {   // Chain another Result operation
+          return divide(x, c)                          // 25 / 5 = 5
+      }),
+      result.Chain(sqrt),                              // sqrt(5) ≈ 2
+      result.Map(func(x int) string {                  // Convert to string
+          return fmt.Sprintf("Final result: %d", x)
+      }),
+  )
+}
+
+func main() {
+  // Success case
+  success := calculate(100, 4, 5)
+  fmt.Println(result.GetOrElse(func() string {
+      return "Error occurred"
+  })(success))
+  // Output: Final result: 2
+
+  // Error case (division by zero)
+  failure := calculate(100, 0, 5)
+  fmt.Println(result.GetOrElse(func() string {
+      return "Error occurred"
+  })(failure))
+  // Output: Error occurred
+}</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>calculator.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "errors"
+  "fmt"
+  "github.com/IBM/fp-go/either"
+  "github.com/IBM/fp-go/function"
+)
+
+func divide(a, b int) either.Either[error, int] {
+  if b == 0 {
+      return either.Left[int](errors.New("division by zero"))
+  }
+  return either.Right[error](a / b)
+}
+
+func sqrt(n int) either.Either[error, int] {
+  if n &lt; 0 {
+      return either.Left[int](errors.New("cannot sqrt negative number"))
+  }
+  // Simplified integer sqrt
+  result := 0
+  for result*result &lt;= n {
+      result++
+  }
+  return either.Right[error](result - 1)
+}
+
+func calculate(a, b, c int) either.Either[error, string] {
+  return function.Pipe3(
+      divide(a, b),                                           // 100 / 4 = 25
+      either.Chain(func(x int) either.Either[error, int] {   // Chain another Either operation
+          return divide(x, c)                                 // 25 / 5 = 5
+      }),
+      either.Chain(sqrt),                                     // sqrt(5) ≈ 2
+      either.Map(func(x int) string {                         // Convert to string
+          return fmt.Sprintf("Final result: %d", x)
+      }),
+  )
+}
+
+func main() {
+  // Success case
+  success := calculate(100, 4, 5)
+  fmt.Println(either.GetOrElse(func() string {
+      return "Error occurred"
+  })(success))
+  // Output: Final result: 2
+
+  // Error case (division by zero)
+  failure := calculate(100, 0, 5)
+  fmt.Println(either.GetOrElse(func() string {
+      return "Error occurred"
+  })(failure))
+  // Output: Error occurred
+}</pre></div></div></div></div><div class=api_M0YO><table class=apiTable_kmi_><thead><tr><th>Concept<th>When to use<th>Notes<tbody><tr><td><code>Chain</code><td><code>a.k.a. FlatMap</code><div class=apiDesc__siK>Use when your transformation returns another Result/Either.</div><td><tr><td><code>Map</code><td><code>Functor map</code><div class=apiDesc__siK>Use when your transformation returns a plain value.</div><td><tr><td><code>Pipe</code><td><code>function.PipeN</code><div class=apiDesc__siK>Compose multiple operations into a pipeline.</div><td><tr><td><code>Auto error</code><td><code>Short-circuit</code><div class=apiDesc__siK>If any step fails, subsequent steps are skipped.</div><td></table></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=next>What's<!-- --> <em>next?</em></h2></div></div><p class=sectionLede_yuVk>Pick a thread to keep learning.<div class=api_M0YO><table class=apiTable_kmi_><thead><tr><th>Topic<th>Page<th>Why<tbody><tr><td><code>Why</code><td><code><a class="" href=/fp-go/docs/why-fp-go>Why fp-go?</a></code><div class=apiDesc__siK>Understand the benefits and when to reach for it.</div><td><tr><td><code>Pure functions</code><td><code><a class="" href=/fp-go/docs/concepts/pure-functions>Pure functions</a></code><div class=apiDesc__siK>The foundation of functional programming.</div><td><tr><td><code>Monads</code><td><code><a class="" href=/fp-go/docs/concepts/monads>Monads</a></code><div class=apiDesc__siK>The pattern behind Result, Either, IO, etc.</div><td><tr><td><code>Result</code><td><code><a class="" href=/fp-go/docs/v2/result>Result</a></code><div class=apiDesc__siK>Recommended type for v2 error handling.</div><td><tr><td><code>Either</code><td><code><a class="" href=/fp-go/docs/v2/either>Either</a></code><div class=apiDesc__siK>Generic sum type.</div><td><tr><td><code>Option</code><td><code><a class="" href=/fp-go/docs/v2/option>Option</a></code><div class=apiDesc__siK>Handle optional values safely.</div><td><tr><td><code>IO</code><td><code><a class="" href=/fp-go/docs/v2/io>IO</a></code><div class=apiDesc__siK>Manage side effects.</div><td><tr><td><code>Recipes · errors</code><td><code><a class="" href=/fp-go/docs/recipes/error-handling>Error handling</a></code><div class=apiDesc__siK>Production-style patterns.</div><td><tr><td><code>Recipes · HTTP</code><td><code><a class="" href=/fp-go/docs/recipes/http-requests>HTTP requests</a></code><div class=apiDesc__siK>Effectful pipelines.</div><td></table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=common-questions>Common questions<a href=#common-questions class=hash-link aria-label="Direct link to Common questions" title="Direct link to Common questions" translate=no>​</a></h3><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>When should I use fp-go?</strong><p><strong>Good fit:</strong> complex error handling, data transformation pipelines, composable business logic, testing-heavy codebases.<p><strong>Not ideal:</strong> simple CRUD, performance-critical hot paths (use idiomatic packages), teams unfamiliar with FP.</div></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Is fp-go production-ready?</strong><p>Yes. fp-go is used in production at IBM and elsewhere. v2 is actively maintained and recommended for new projects.</div></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>What's the performance impact?</strong><p>Standard packages: minimal overhead. Idiomatic packages (v2): 2–32× faster, near-native performance. See the <a href=./advanced/performance>performance guide</a> for details.</div></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Migrating from v1 to v2?</strong><p>See the <a href=./migration/v1-to-v2>migration guide</a> for a complete walkthrough of the 5 breaking changes and how to handle them.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>07</span><h2 class=sectionTitle__6nw id=summary>Summary</h2></div></div><div class=check_Z_XE><div class=checkHead__B8i><span>What you learned</span><span>6<!-- --> / <!-- -->6<!-- --> complete</span></div><ul class=checkList_ziWk><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to install fp-go (v1 or v2)</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to write pure functions with Result/Either</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to compose operations with Pipe</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to transform values with Map and Chain</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to handle errors automatically</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>How to build complex pipelines</span></ul></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Next step.</strong><p>Read <a href=./why-fp-go>Why fp-go?</a> to understand when and why to use functional programming in Go.</div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=need-help>Need help?<a href=#need-help class=hash-link aria-label="Direct link to Need help?" title="Direct link to Need help?" translate=no>​</a></h3><ul><li><a href=./intro>Full documentation</a><li><a href=https://github.com/IBM/fp-go/discussions>GitHub Discussions</a><li><a href=https://github.com/IBM/fp-go/issues>Report issues</a><li><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2>API reference</a></ul></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/installation><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Installation</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/why-fp-go><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Why fp-go?</span></a></nav></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#run-it class="table-of-contents__link toc-highlight">Run it</a><li><a href=#1-pure-functions-return-results class="table-of-contents__link toc-highlight">1. Pure functions return results</a><li><a href=#2-compose-with-pipe class="table-of-contents__link toc-highlight">2. Compose with Pipe</a><li><a href=#3-transform-with-map class="table-of-contents__link toc-highlight">3. Transform with Map</a><li><a href=#4-extract-with-getorelse class="table-of-contents__link toc-highlight">4. Extract with GetOrElse</a><li><a href=#common-questions class="table-of-contents__link toc-highlight">Common questions</a><li><a href=#need-help class="table-of-contents__link toc-highlight">Need help?</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

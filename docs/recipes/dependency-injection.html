@@ -1,0 +1,424 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-recipes/dependency-injection" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Dependency Injection | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/recipes/dependency-injection /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Dependency Injection | fp-go"/><meta data-rh=true name=description content="Implement dependency injection using the Reader pattern with fp-go for testable, modular code."/><meta data-rh=true property=og:description content="Implement dependency injection using the Reader pattern with fp-go for testable, modular code."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/recipes/dependency-injection /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/dependency-injection hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/recipes/dependency-injection hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/recipes/dependency-injection","name":"Dependency Injection","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a class="navbar__item navbar__link" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/recipes/dependency-injection>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/recipes/dependency-injection>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Error Handling</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/validation><span class=num_TgSU>02</span><span class=title_kV1V>Validation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-recovery><span class=num_TgSU>03</span><span class=title_kV1V>Error Recovery</span></a><a class=item_eWIL href=/fp-go/docs/recipes/error-handling><span class=num_TgSU>04</span><span class=title_kV1V>Error Handling Patterns</span></a><a class=item_eWIL href=/fp-go/docs/recipes/retry><span class=num_TgSU>05</span><span class=title_kV1V>Retry Logic</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Data Processing</span><span class=ct_cC82>04</span></h5><a class=item_eWIL href=/fp-go/docs/recipes/data-transformation><span class=num_TgSU>06</span><span class=title_kV1V>Data Transformation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/filtering-mapping><span class=num_TgSU>07</span><span class=title_kV1V>Filtering and Mapping</span></a><a class=item_eWIL href=/fp-go/docs/recipes/aggregation><span class=num_TgSU>08</span><span class=title_kV1V>Data Aggregation</span></a><a class=item_eWIL href=/fp-go/docs/recipes/parsing><span class=num_TgSU>09</span><span class=title_kV1V>Parsing Data</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>01</span></h5><a class=item_eWIL href=/fp-go/docs/recipes-index><span class=num_TgSU>01</span><span class=title_kV1V>Recipes</span></a></div><button type=button class=collapsible_dWJM aria-expanded=false><span>I/O Operations</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class="collapsible_dWJM collapsibleOpen_k5jx" aria-expanded=true><span>Composition Patterns</span><span class=right_oCLK><span>03</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><div class=subGroup_zSqR><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/recipes/dependency-injection><span class=num_TgSU>13</span><span class=title_kV1V>Dependency Injection</span></a><a class=item_eWIL href=/fp-go/docs/recipes/pipelines><span class=num_TgSU>14</span><span class=title_kV1V>Function Pipelines</span></a><a class=item_eWIL href=/fp-go/docs/recipes/middleware><span class=num_TgSU>15</span><span class=title_kV1V>Middleware Patterns</span></a></div><button type=button class=collapsible_dWJM aria-expanded=false><span>Testing</span><span class=right_oCLK><span>02</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Composition Patterns</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Dependency Injection</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Recipes · 13 / 17</div><h1 class=headTitle_xWjG>Dependency<!-- --> <em>Injection</em></h1><p class=lede_Ltdj>Implement dependency injection using the Reader pattern with fp-go for testable, modular code without global state.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>Difficulty</span><span class=metaV_zAp5>Advanced</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Patterns</span><span class=metaV_zAp5>6</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Use Cases</span><span class=metaV_zAp5>Service layers, HTTP APIs, testing</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div><div class="tldrCard_nSap "><div class="tldrV_gUPe "></div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=basic-reader>Basic Reader<!-- --> <em>Pattern</em></h2></div></div><p>The Reader pattern allows functions to access dependencies without passing them explicitly through every function call.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>reader_basic.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  R "github.com/IBM/fp-go/v2/reader"
+)
+
+type Config struct {
+  APIKey string
+  BaseURL string
+}
+
+// Reader that needs Config
+type AppReader[A any] = R.Reader[Config, A]
+
+func getAPIKey() AppReader[string] {
+  return R.Asks(func(cfg Config) string {
+      return cfg.APIKey
+  })
+}
+
+func getBaseURL() AppReader[string] {
+  return R.Asks(func(cfg Config) string {
+      return cfg.BaseURL
+  })
+}
+
+func buildURL(path string) AppReader[string] {
+  return R.Map(func(base string) string {
+      return base + path
+  })(getBaseURL())
+}
+
+func main() {
+  config := Config{
+      APIKey: "secret-key-123",
+      BaseURL: "https://api.example.com",
+  }
+  
+  // Execute readers with config
+  apiKey := getAPIKey()(config)
+  url := buildURL("/users")(config)
+  
+  fmt.Println("API Key:", apiKey)
+  fmt.Println("URL:", url)
+  // API Key: secret-key-123
+  // URL: https://api.example.com/users
+}
+</pre></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Reader vs Global State</strong>: Reader makes dependencies explicit and testable. Global variables hide dependencies and make testing difficult.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=service-layer>Service Layer<!-- --> <em>Pattern</em></h2></div></div><p>Build service layers with multiple dependencies using ReaderEither for error handling.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>service_layer.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "fmt"
+  RE "github.com/IBM/fp-go/v2/readereither"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+// Service interfaces
+type UserService interface {
+  GetUser(ctx context.Context, id int) IOE.IOEither[error, User]
+  CreateUser(ctx context.Context, user User) IOE.IOEither[error, User]
+}
+
+type EmailService interface {
+  SendEmail(ctx context.Context, to, subject, body string) IOE.IOEither[error, struct{}]
+}
+
+// Dependencies container
+type Services struct {
+  Users  UserService
+  Emails EmailService
+}
+
+// Reader type for services
+type ServiceReader[A any] = RE.ReaderEither[Services, error, A]
+
+type User struct {
+  ID    int
+  Name  string
+  Email string
+}
+
+// Service operations
+func getUser(ctx context.Context, id int) ServiceReader[User] {
+  return RE.Asks(func(services Services) IOE.Either[error, User] {
+      return services.Users.GetUser(ctx, id)()
+  })
+}
+
+func sendWelcomeEmail(ctx context.Context, user User) ServiceReader[struct{}] {
+  return RE.Asks(func(services Services) IOE.Either[error, struct{}] {
+      return services.Emails.SendEmail(
+          ctx,
+          user.Email,
+          "Welcome!",
+          fmt.Sprintf("Hello %s, welcome to our platform!", user.Name),
+      )()
+  })
+}
+
+// Composed operation
+func createUserAndSendWelcome(ctx context.Context, user User) ServiceReader[User] {
+  return F.Pipe3(
+      RE.Do[Services, error](RE.Monad[Services, error, User]()),
+      RE.Bind("user", func() ServiceReader[User] {
+          return RE.Asks(func(services Services) IOE.Either[error, User] {
+              return services.Users.CreateUser(ctx, user)()
+          })
+      }),
+      RE.ChainFirst(func(u User) ServiceReader[struct{}] {
+          return sendWelcomeEmail(ctx, u)
+      }),
+      RE.Map(func(data struct{ user User }) User {
+          return data.user
+      }),
+  )
+}
+
+func main() {
+  services := Services{
+      Users:  &MockUserService{},
+      Emails: &MockEmailService{},
+  }
+  
+  ctx := context.Background()
+  newUser := User{Name: "Alice", Email: "alice@example.com"}
+  
+  result := createUserAndSendWelcome(ctx, newUser)(services)
+  
+  if result.IsLeft() {
+      fmt.Println("Error:", result.Left())
+  } else {
+      fmt.Printf("Created user: %+v\n", result.Right())
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=readerioeither>ReaderIOEither<!-- --> <em>Pattern</em></h2></div></div><p>Combine Reader with IO and error handling for real-world applications.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>readerioeither.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "fmt"
+  RIE "github.com/IBM/fp-go/v2/readerioeither"
+  IOE "github.com/IBM/fp-go/v2/ioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+type AppDeps struct {
+  Config   Config
+  Database Database
+  Logger   Logger
+}
+
+type AppEffect[A any] = RIE.ReaderIOEither[AppDeps, error, A]
+
+func logInfo(msg string) AppEffect[struct{}] {
+  return RIE.Asks(func(deps AppDeps) IOE.IOEither[error, struct{}] {
+      return IOE.TryCatch(func() (struct{}, error) {
+          deps.Logger.Info(msg)
+          return struct{}{}, nil
+      })
+  })
+}
+
+func queryDB(sql string) AppEffect[[]string] {
+  return RIE.Asks(func(deps AppDeps) IOE.IOEither[error, []string] {
+      return IOE.TryCatch(func() ([]string, error) {
+          return deps.Database.Query(sql)
+      })
+  })
+}
+
+func getUsersWithLogging() AppEffect[[]string] {
+  return F.Pipe3(
+      logInfo("Starting user query"),
+      RIE.Chain(func(_ struct{}) AppEffect[[]string] {
+          return queryDB("SELECT * FROM users")
+      }),
+      RIE.ChainFirst(func(users []string) AppEffect[struct{}] {
+          return logInfo(fmt.Sprintf("Found %d users", len(users)))
+      }),
+  )
+}
+
+func main() {
+  deps := AppDeps{
+      Config:   Config{},
+      Database: &MockDatabase{},
+      Logger:   &ConsoleLogger{},
+  }
+  
+  result := getUsersWithLogging()(deps)()
+  
+  if result.IsLeft() {
+      fmt.Println("Error:", result.Left())
+  } else {
+      fmt.Println("Users:", result.Right())
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=testing>Testing with<!-- --> <em>DI</em></h2></div></div><p>Dependency injection makes testing trivial—just provide mock implementations.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>testing_di.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "testing"
+)
+
+// Mock implementations
+type MockUserService struct {
+  users map[int]User
+}
+
+func (m *MockUserService) GetUser(ctx context.Context, id int) IOE.IOEither[error, User] {
+  return IOE.TryCatch(func() (User, error) {
+      if user, ok := m.users[id]; ok {
+          return user, nil
+      }
+      return User{}, fmt.Errorf("user not found: %d", id)
+  })
+}
+
+func (m *MockUserService) CreateUser(ctx context.Context, user User) IOE.IOEither[error, User] {
+  return IOE.TryCatch(func() (User, error) {
+      user.ID = len(m.users) + 1
+      m.users[user.ID] = user
+      return user, nil
+  })
+}
+
+type MockEmailService struct {
+  sentEmails []string
+}
+
+func (m *MockEmailService) SendEmail(ctx context.Context, to, subject, body string) IOE.IOEither[error, struct{}] {
+  return IOE.TryCatch(func() (struct{}, error) {
+      m.sentEmails = append(m.sentEmails, to)
+      return struct{}{}, nil
+  })
+}
+
+// Test
+func TestCreateUserAndSendWelcome(t *testing.T) {
+  mockUsers := &MockUserService{
+      users: make(map[int]User),
+  }
+  mockEmails := &MockEmailService{
+      sentEmails: []string{},
+  }
+  
+  services := Services{
+      Users:  mockUsers,
+      Emails: mockEmails,
+  }
+  
+  ctx := context.Background()
+  newUser := User{Name: "Bob", Email: "bob@example.com"}
+  
+  result := createUserAndSendWelcome(ctx, newUser)(services)
+  
+  if result.IsLeft() {
+      t.Fatalf("Expected success, got error: %v", result.Left())
+  }
+  
+  user := result.Right()
+  if user.ID == 0 {
+      t.Error("Expected user ID to be set")
+  }
+  
+  if len(mockEmails.sentEmails) != 1 {
+      t.Errorf("Expected 1 email sent, got %d", len(mockEmails.sentEmails))
+  }
+  
+  if mockEmails.sentEmails[0] != "bob@example.com" {
+      t.Errorf("Expected email to bob@example.com, got %s", mockEmails.sentEmails[0])
+  }
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=http-api>HTTP API<!-- --> <em>Example</em></h2></div></div><p>Complete HTTP API with dependency injection for clean, testable handlers.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>http_api.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "context"
+  "encoding/json"
+  "fmt"
+  "net/http"
+  RIE "github.com/IBM/fp-go/v2/readerioeither"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+// Application dependencies
+type AppContext struct {
+  UserRepo  UserRepository
+  Logger    Logger
+  Config    AppConfig
+}
+
+type AppConfig struct {
+  Port     int
+  LogLevel string
+}
+
+type UserRepository interface {
+  FindByID(ctx context.Context, id int) IOE.IOEither[error, User]
+  Save(ctx context.Context, user User) IOE.IOEither[error, User]
+  List(ctx context.Context) IOE.IOEither[error, []User]
+}
+
+type AppHandler[A any] = RIE.ReaderIOEither[AppContext, error, A]
+
+// Handler operations
+func logRequest(method, path string) AppHandler[struct{}] {
+  return RIE.Asks(func(app AppContext) IOE.IOEither[error, struct{}] {
+      return IOE.TryCatch(func() (struct{}, error) {
+          app.Logger.Info(fmt.Sprintf("%s %s", method, path))
+          return struct{}{}, nil
+      })
+  })
+}
+
+func getUserByID(ctx context.Context, id int) AppHandler[User] {
+  return RIE.Asks(func(app AppContext) IOE.IOEither[error, User] {
+      return app.UserRepo.FindByID(ctx, id)
+  })
+}
+
+func createUser(ctx context.Context, user User) AppHandler[User] {
+  return RIE.Asks(func(app AppContext) IOE.IOEither[error, User] {
+      return app.UserRepo.Save(ctx, user)
+  })
+}
+
+// HTTP handlers
+func makeGetUserHandler(app AppContext) http.HandlerFunc {
+  return func(w http.ResponseWriter, r *http.Request) {
+      id := 1 // Parse from URL
+      
+      handler := F.Pipe2(
+          logRequest("GET", r.URL.Path),
+          RIE.Chain(func(_ struct{}) AppHandler[User] {
+              return getUserByID(r.Context(), id)
+          }),
+      )
+      
+      result := handler(app)()
+      
+      if result.IsLeft() {
+          http.Error(w, result.Left().Error(), http.StatusInternalServerError)
+          return
+      }
+      
+      json.NewEncoder(w).Encode(result.Right())
+  }
+}
+
+func main() {
+  app := AppContext{
+      UserRepo: &InMemoryUserRepo{users: make(map[int]User)},
+      Logger:   &ConsoleLogger{},
+      Config:   AppConfig{Port: 8080, LogLevel: "info"},
+  }
+  
+  http.HandleFunc("/users", makeCreateUserHandler(app))
+  http.HandleFunc("/users/", makeGetUserHandler(app))
+  
+  fmt.Printf("Server starting on port %d\n", app.Config.Port)
+  http.ListenAndServe(fmt.Sprintf(":%d", app.Config.Port), nil)
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=best-practices>Best<!-- --> <em>Practices</em></h2></div></div><div class=check_Z_XE><div class=checkHead__B8i><span>Steps</span></div><ul class=checkList_ziWk><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Keep dependencies minimal</strong> — Only include what each function actually needs</p></span><span class=checkImpact_BaeN>required</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Use interfaces</strong> — Define interfaces for all dependencies to enable mocking</p></span><span class=checkImpact_BaeN>required</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Compose small readers</strong> — Build complex operations from simple, focused functions</p></span><span class=checkImpact_BaeN>recommended</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Avoid kitchen sink</strong> — Don't pass every possible dependency to every function</p></span><span class=checkImpact_BaeN>recommended</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Scope dependencies</strong> — Use nested readers for request-scoped vs app-scoped dependencies</p></span><span class=checkImpact_BaeN>optional</span></ul></div><div class=compare_WfXa><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>good_di.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Good: Minimal, focused dependencies
+type UserHandlerDeps struct {
+  UserRepo UserRepository
+  Logger   Logger
+}
+
+// ✅ Good: Interface for testability
+type Logger interface {
+  Info(msg string)
+  Error(msg string)
+}
+
+// ✅ Good: Small, composable readers
+func getUser(id int) AppReader[User] { /* ... */ }
+func validateUser(user User) AppReader[User] { /* ... */ }
+func saveUser(user User) AppReader[User] { /* ... */ }
+
+func createUser(user User) AppReader[User] {
+  return F.Pipe2(
+      validateUser(user),
+      R.Chain(saveUser),
+  )
+}
+</pre></div></div></div><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>bad_di.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Avoid: Kitchen sink dependencies
+type UserHandlerDeps struct {
+  UserRepo    UserRepository
+  EmailRepo   EmailRepository
+  PaymentRepo PaymentRepository
+  Logger      Logger
+  Cache       Cache
+  Queue       Queue
+  // ... everything
+}
+
+// ❌ Avoid: Concrete types
+type Logger struct {
+  file *os.File
+}
+
+// ❌ Avoid: Monolithic readers
+func createUser(user User) AppReader[User] {
+  // 100 lines of logic
+}
+</pre></div></div></div></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/recipes/parallel-tasks><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Parallel Tasks</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/recipes/pipelines><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Function Pipelines</span></a></nav></article></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

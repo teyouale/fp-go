@@ -1,0 +1,479 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-concepts/monads" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Monads | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/concepts/monads /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Monads | fp-go"/><meta data-rh=true name=description content="A practical pattern for sequencing computations with context — no category theory required."/><meta data-rh=true property=og:description content="A practical pattern for sequencing computations with context — no category theory required."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/concepts/monads /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/monads hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/concepts/monads hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/concepts/monads","name":"Monads","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/concepts/monads>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/concepts/monads>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->17<!-- --> done</span><span>·</span><span>~<!-- -->68<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>Migration</span><span class=ct_cC82>03</span></h5><a class=item_eWIL href=/fp-go/docs/migration><span class=num_TgSU>06</span><span class=title_kV1V>Migration Guide</span></a><a class=item_eWIL href=/fp-go/docs/migration/v1-to-v2><span class=num_TgSU>07</span><span class=title_kV1V>v1 to v2 Migration</span></a><a class=item_eWIL href=/fp-go/docs/migration/interop><span class=num_TgSU>08</span><span class=title_kV1V>v1 and v2 Interop</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Concepts</span><span class=ct_cC82>06</span></h5><a class=item_eWIL href=/fp-go/docs/concepts/pure-functions><span class=num_TgSU>09</span><span class=title_kV1V>Pure Functions</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/concepts/monads><span class=num_TgSU>10</span><span class=title_kV1V>Monads</span></a><a class=item_eWIL href=/fp-go/docs/concepts/composition><span class=num_TgSU>11</span><span class=title_kV1V>Composition</span></a><a class=item_eWIL href=/fp-go/docs/concepts/effects-and-io><span class=num_TgSU>12</span><span class=title_kV1V>Effects and IO</span></a><a class=item_eWIL href=/fp-go/docs/concepts/higher-kinded-types><span class=num_TgSU>13</span><span class=title_kV1V>Higher-Kinded Types</span></a><a class=item_eWIL href=/fp-go/docs/concepts/zen-of-go><span class=num_TgSU>14</span><span class=title_kV1V>The Zen of Go</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>08</span></h5><a class=item_eWIL href=/fp-go/docs/intro><span class=num_TgSU>01</span><span class=title_kV1V>What is fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/installation><span class=num_TgSU>02</span><span class=title_kV1V>Installation</span></a><a class=item_eWIL href=/fp-go/docs/quickstart><span class=num_TgSU>03</span><span class=title_kV1V>5-Minute Quickstart</span></a><a class=item_eWIL href=/fp-go/docs/why-fp-go><span class=num_TgSU>04</span><span class=title_kV1V>Why fp-go?</span></a><a class=item_eWIL href=/fp-go/docs/comparison><span class=num_TgSU>05</span><span class=title_kV1V>Comparison with Other Libraries</span></a><a class=item_eWIL href=/fp-go/docs/faq><span class=num_TgSU>15</span><span class=title_kV1V>Frequently Asked Questions</span></a><a class=item_eWIL href=/fp-go/docs/glossary><span class=num_TgSU>16</span><span class=title_kV1V>Glossary</span></a><a class=item_eWIL href=/fp-go/docs/design-kit><span class=num_TgSU>17</span><span class=title_kV1V>Content design kit</span></a></div></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Concepts</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Monads</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Concepts · 02 / 06</div><h1 class=headTitle_xWjG>Monads.</h1><p class=lede_Ltdj>A practical pattern for chaining operations with context. No category theory required.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>// Difficulty</span><span class=metaV_zAp5>Intermediate</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Reading time</span><span class=metaV_zAp5>12 min · 8 sections</span></div><div class=metaRow_drwK><span class=metaK_SNLg>// Prereqs</span><span class=metaV_zAp5>Pure functions</span></div></aside></header>
+<div class=tldr_mz3p><div class="tldrCard_nSap "><div class=tldrK_kP7m>// Mental model</div><div class="tldrV_gUPe tldrVProse_sV_2">A box with rules for <em>chaining</em>.</div></div><div class="tldrCard_nSap "><div class=tldrK_kP7m>// Common monads</div><div class="tldrV_gUPe tldrVProse_sV_2">Option · Result · IO · <em>Array</em>.</div></div><div class="tldrCard_nSap up_ip1p"><div class=tldrK_kP7m>// Key ops</div><div class="tldrV_gUPe tldrVProse_sV_2"><em>Map</em>, Chain, Fold.</div></div></div>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=what>What is a<!-- --> <em>monad?</em></h2></div></div><p>A <strong>monad</strong> is a design pattern for chaining operations that have some "context" or "effect".<div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Think of it as.</strong><p>A box that holds a value, plus rules for chaining operations on that value while preserving the context.</div></div><div class=api_M0YO><table class=apiTable_kmi_><thead><tr><th>Monad<th>Context<th>When you reach for it<tbody><tr><td><code>Option</code><td><code>"might not have a value"</code><div class=apiDesc__siK>Optional / nullable fields without nil pointers.</div><td><tr><td><code>Result</code><td><code>"might be an error"</code><div class=apiDesc__siK>Error handling without manual if-err checks.</div><td><tr><td><code>IO</code><td><code>"will perform side effects"</code><div class=apiDesc__siK>Effectful computations described lazily.</div><td><tr><td><code>Array</code><td><code>"has multiple values"</code><div class=apiDesc__siK>Branching / one-to-many transformations.</div><td></table></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=why>Why do we<!-- --> <em>need monads?</em></h2></div></div><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">The problem<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With monads</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>problem.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Without monads: error handling is messy
+func processUser(id string) (User, error) {
+  user, err := fetchUser(id)
+  if err != nil {
+      return User{}, err
+  }
+
+  validated, err := validateUser(user)
+  if err != nil {
+      return User{}, err
+  }
+
+  enriched, err := enrichUser(validated)
+  if err != nil {
+      return User{}, err
+  }
+
+  saved, err := saveUser(enriched)
+  if err != nil {
+      return User{}, err
+  }
+
+  return saved, nil
+}
+
+// Repetitive error checking
+// Hard to compose
+// Lots of boilerplate</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>solution.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// With Result monad: clean and composable
+import (
+  "github.com/IBM/fp-go/v2/result"
+  "github.com/IBM/fp-go/v2/function"
+)
+
+func processUser(id string) result.Result[User] {
+  return function.Pipe4(
+      fetchUser(id),
+      result.Chain(validateUser),
+      result.Chain(enrichUser),
+      result.Chain(saveUser),
+  )
+}
+
+// No repetitive error checking
+// Composable
+// Clear data flow
+// Stops at first error automatically</pre></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=pattern>The monad<!-- --> <em>pattern.</em></h2></div></div><p class=sectionLede_yuVk>Every monad has three things.<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-a-type-constructor>1. A type constructor<a href=#1-a-type-constructor class=hash-link aria-label="Direct link to 1. A type constructor" title="Direct link to 1. A type constructor" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>constructors.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Option monad
+type Option[A any] struct { /* ... */ }
+
+// Result monad
+type Result[A any] struct { /* ... */ }
+
+// IO monad
+type IO[A any] func() A</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-a-way-to-put-values-in-returnof>2. A way to put values in (<code>Return</code>/<code>Of</code>)<a href=#2-a-way-to-put-values-in-returnof class=hash-link aria-label="Direct link to 2-a-way-to-put-values-in-returnof" title="Direct link to 2-a-way-to-put-values-in-returnof" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>of.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Option
+opt := option.Some(42)           // Put 42 in Option context
+
+// Result
+res := result.Ok(42)             // Put 42 in Result context
+
+// IO
+io := io.Of(func() int { return 42 })  // Put 42 in IO context</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-a-way-to-chain-operations-chainflatmap>3. A way to chain operations (<code>Chain</code>/<code>FlatMap</code>)<a href=#3-a-way-to-chain-operations-chainflatmap class=hash-link aria-label="Direct link to 3-a-way-to-chain-operations-chainflatmap" title="Direct link to 3-a-way-to-chain-operations-chainflatmap" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Option
+result := option.Chain(func(x int) option.Option[int] {
+  return option.Some(x * 2)
+})(opt)
+
+// Result
+result := result.Chain(func(x int) result.Result[int] {
+  return result.Ok(x * 2)
+})(res)
+
+// IO
+result := io.Chain(func(x int) io.IO[int] {
+  return io.Of(func() int { return x * 2 })
+})(myIO)</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>04</span><h2 class=sectionTitle__6nw id=common>Common monads in<!-- --> <em>fp-go.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=option-monad--might-not-have-a-value>Option monad — "might not have a value"<a href=#option-monad--might-not-have-a-value class=hash-link aria-label='Direct link to Option monad — "might not have a value"' title='Direct link to Option monad — "might not have a value"' translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Without Option<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With Option</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>without.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func findUser(id string) *User {
+  user := db.FindByID(id)
+  return user
+}
+
+func getEmail(user *User) *string {
+  if user == nil {
+      return nil
+  }
+  return &user.Email
+}
+
+// Lots of nil checks
+user := findUser("123")
+if user != nil {
+  email := getEmail(user)
+  if email != nil {
+      // Use email
+  }
+}</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>with.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/option"
+
+func findUser(id string) option.Option[User] {
+  user := db.FindByID(id)
+  if user == nil {
+      return option.None[User]()
+  }
+  return option.Some(*user)
+}
+
+func getEmail(user User) option.Option[string] {
+  if user.Email == "" {
+      return option.None[string]()
+  }
+  return option.Some(user.Email)
+}
+
+// Chain operations
+email := option.Chain(getEmail)(findUser("123"))
+
+// Or with Pipe
+email := function.Pipe2(
+  findUser("123"),
+  option.Chain(getEmail),
+)
+
+// Handle result
+email.Fold(
+  func() { fmt.Println("No email") },
+  func(e string) { fmt.Println("Email:", e) },
+)</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=result-monad--might-be-an-error>Result monad — "might be an error"<a href=#result-monad--might-be-an-error class=hash-link aria-label='Direct link to Result monad — "might be an error"' title='Direct link to Result monad — "might be an error"' translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Without Result<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With Result</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>without.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func divide(a, b int) (int, error) {
+  if b == 0 {
+      return 0, errors.New("division by zero")
+  }
+  return a / b, nil
+}
+
+func processNumbers(a, b, c int) (int, error) {
+  result1, err := divide(a, b)
+  if err != nil {
+      return 0, err
+  }
+
+  result2, err := divide(result1, c)
+  if err != nil {
+      return 0, err
+  }
+
+  return result2, nil
+}</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>with.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/result"
+
+func divide(a, b int) result.Result[int] {
+  if b == 0 {
+      return result.Err[int](errors.New("division by zero"))
+  }
+  return result.Ok(a / b)
+}
+
+func processNumbers(a, b, c int) result.Result[int] {
+  return function.Pipe2(
+      divide(a, b),
+      result.Chain(func(x int) result.Result[int] {
+          return divide(x, c)
+      }),
+  )
+}
+
+// Stops at first error automatically</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=io-monad--will-perform-side-effects>IO monad — "will perform side effects"<a href=#io-monad--will-perform-side-effects class=hash-link aria-label='Direct link to IO monad — "will perform side effects"' title='Direct link to IO monad — "will perform side effects"' translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Without IO<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With IO</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>without.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func readFile(path string) ([]byte, error) {
+  return os.ReadFile(path) // Executes immediately
+}
+
+func parseJSON(data []byte) (Config, error) {
+  var config Config
+  err := json.Unmarshal(data, &config)
+  return config, err
+}
+
+// Hard to test, executes immediately
+config, err := readFile("config.json")
+if err != nil {
+  return err
+}
+parsed, err := parseJSON(config)</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>with.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/ioresult"
+
+func readFile(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+func parseJSON(data []byte) result.Result[Config] {
+  var config Config
+  err := json.Unmarshal(data, &config)
+  return result.FromGoError(config, err)
+}
+
+// Build pipeline (doesn't execute yet)
+loadConfig := function.Pipe2(
+  readFile("config.json"),
+  ioresult.Chain(func(data []byte) ioresult.IOResult[Config] {
+      return ioresult.FromResult(parseJSON(data))
+  }),
+)
+
+// Execute when ready
+config := loadConfig()  // Now it runs</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=array-monad--has-multiple-values>Array monad — "has multiple values"<a href=#array-monad--has-multiple-values class=hash-link aria-label='Direct link to Array monad — "has multiple values"' title='Direct link to Array monad — "has multiple values"' translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>array.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import "github.com/IBM/fp-go/v2/array"
+
+// Array is a monad!
+numbers := []int{1, 2, 3}
+
+// Chain (FlatMap) - each element produces an array
+result := array.Chain(func(x int) []int {
+  return []int{x, x * 2}
+})(numbers)
+// [1, 2, 2, 4, 3, 6]
+
+// Map - each element produces a single value
+doubled := array.Map(func(x int) int {
+  return x * 2
+})(numbers)
+// [2, 4, 6]</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>05</span><h2 class=sectionTitle__6nw id=operations>Monad<!-- --> <em>operations.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=map-vs-chain>Map vs. Chain<a href=#map-vs-chain class=hash-link aria-label="Direct link to Map vs. Chain" title="Direct link to Map vs. Chain" translate=no>​</a></h3><div class=compare_WfXa><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>Map</span><span class=comparePill_fmmx>A → B</span></div><div class=compareBody_hP62><p>Transform the value inside.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>map.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+opt := option.Some(5)
+doubled := option.Map(func(x int) int {
+  return x * 2
+})(opt)
+// Some(10)</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>Chain</span><span class=comparePill_fmmx>A → M[B]</span></div><div class=compareBody_hP62><p>Transform and return a new monad.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+opt := option.Some(5)
+result := option.Chain(func(x int) option.Option[int] {
+  if x > 0 {
+      return option.Some(x * 2)
+  }
+  return option.None[int]()
+})(opt)
+// Some(10)</pre></div></div></div></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Rule of thumb.</strong><p>Use <strong>Map</strong> when your function returns a plain value. Use <strong>Chain</strong> when your function returns another monad.</div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=common-operations-across-monads>Common operations across monads<a href=#common-operations-across-monads class=hash-link aria-label="Direct link to Common operations across monads" title="Direct link to Common operations across monads" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>ops-of.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Of/Return - Put value in monad
+option.Some(42)
+result.Ok(42)
+io.Of(func() int { return 42 })</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>ops-map.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Map - Transform value
+option.Map(func(x int) int { return x * 2 })(opt)
+result.Map(func(x int) int { return x * 2 })(res)
+io.Map(func(x int) int { return x * 2 })(myIO)</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>ops-chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Chain/FlatMap - Transform and flatten
+option.Chain(func(x int) option.Option[int] {
+  return option.Some(x * 2)
+})(opt)
+
+result.Chain(func(x int) result.Result[int] {
+  return result.Ok(x * 2)
+})(res)</pre></div><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>ops-fold.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Fold - Extract value
+option.Fold(
+  func() int { return 0 },           // None case
+  func(x int) int { return x },      // Some case
+)(opt)
+
+result.Fold(
+  func(err error) int { return 0 },  // Error case
+  func(x int) int { return x },      // Success case
+)(res)</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>06</span><h2 class=sectionTitle__6nw id=laws>The monad<!-- --> <em>laws.</em></h2></div></div><p class=sectionLede_yuVk>Three laws guarantee predictable composition. You don't have to memorize them.<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=law-1--left-identity>Law 1 — Left identity<a href=#law-1--left-identity class=hash-link aria-label="Direct link to Law 1 — Left identity" title="Direct link to Law 1 — Left identity" translate=no>​</a></h3><p><code>of(a).chain(f) === f(a)</code><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>law1.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+a := 5
+f := func(x int) option.Option[int] { return option.Some(x * 2) }
+
+// These are equivalent:
+result1 := option.Chain(f)(option.Some(a))
+result2 := f(a)
+// Both give Some(10)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=law-2--right-identity>Law 2 — Right identity<a href=#law-2--right-identity class=hash-link aria-label="Direct link to Law 2 — Right identity" title="Direct link to Law 2 — Right identity" translate=no>​</a></h3><p><code>m.chain(of) === m</code><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>law2.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+m := option.Some(5)
+
+// These are equivalent:
+result1 := option.Chain(option.Some[int])(m)
+result2 := m
+// Both give Some(5)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=law-3--associativity>Law 3 — Associativity<a href=#law-3--associativity class=hash-link aria-label="Direct link to Law 3 — Associativity" title="Direct link to Law 3 — Associativity" translate=no>​</a></h3><p><code>m.chain(f).chain(g) === m.chain(x => f(x).chain(g))</code><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>law3.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+m := option.Some(5)
+f := func(x int) option.Option[int] { return option.Some(x * 2) }
+g := func(x int) option.Option[int] { return option.Some(x + 1) }
+
+// These are equivalent:
+result1 := option.Chain(g)(option.Chain(f)(m))
+result2 := option.Chain(func(x int) option.Option[int] {
+  return option.Chain(g)(f(x))
+})(m)
+// Both give Some(11)</pre></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Why these matter.</strong><p>They ensure monads compose predictably.</div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>07</span><h2 class=sectionTitle__6nw id=examples>Real-world<!-- --> <em>examples.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=user-registration>User registration<a href=#user-registration class=hash-link aria-label="Direct link to User registration" title="Direct link to User registration" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Without monads<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With monads</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>without.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func registerUser(email, password string) (User, error) {
+  if !isValidEmail(email) {
+      return User{}, errors.New("invalid email")
+  }
+
+  existing, err := db.FindByEmail(email)
+  if err != nil {
+      return User{}, err
+  }
+  if existing != nil {
+      return User{}, errors.New("email already exists")
+  }
+
+  hash, err := bcrypt.GenerateFromPassword([]byte(password), 10)
+  if err != nil {
+      return User{}, err
+  }
+
+  user := User{
+      Email:    email,
+      Password: string(hash),
+  }
+
+  if err := db.Save(&user); err != nil {
+      return User{}, err
+  }
+
+  return user, nil
+}</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>with.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import (
+  "github.com/IBM/fp-go/v2/result"
+  "github.com/IBM/fp-go/v2/function"
+)
+
+func validateEmail(email string) result.Result[string] {
+  if !isValidEmail(email) {
+      return result.Err[string](errors.New("invalid email"))
+  }
+  return result.Ok(email)
+}
+
+func checkNotExists(email string) result.Result[string] {
+  existing, err := db.FindByEmail(email)
+  if err != nil {
+      return result.Err[string](err)
+  }
+  if existing != nil {
+      return result.Err[string](errors.New("email already exists"))
+  }
+  return result.Ok(email)
+}
+
+func hashPassword(password string) result.Result[string] {
+  hash, err := bcrypt.GenerateFromPassword([]byte(password), 10)
+  return result.FromGoError(string(hash), err)
+}
+
+func createUser(email, hash string) result.Result[User] {
+  user := User{Email: email, Password: hash}
+  err := db.Save(&user)
+  return result.FromGoError(user, err)
+}
+
+func registerUser(email, password string) result.Result[User] {
+  return function.Pipe4(
+      validateEmail(email),
+      result.Chain(checkNotExists),
+      result.Chain(func(e string) result.Result[string] {
+          return hashPassword(password)
+      }),
+      result.Chain(func(hash string) result.Result[User] {
+          return createUser(email, hash)
+      }),
+  )
+}</pre></div></div></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=configuration-loading>Configuration loading<a href=#configuration-loading class=hash-link aria-label="Direct link to Configuration loading" title="Direct link to Configuration loading" translate=no>​</a></h3><div class="theme-tabs-container tabs-container tabList__CuJ"><ul role=tablist aria-orientation=horizontal class=tabs><li role=tab tabindex=0 aria-selected=true class="tabs__item tabItem_LNqP tabs__item--active">Without monads<li role=tab tabindex=-1 aria-selected=false class="tabs__item tabItem_LNqP">With monads</ul><div class=margin-top--md><div role=tabpanel class=tabItem_Ymn6><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>without.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func loadConfig() (Config, error) {
+  data, err := os.ReadFile("config.json")
+  if err != nil {
+      return Config{}, err
+  }
+
+  var raw RawConfig
+  if err := json.Unmarshal(data, &raw); err != nil {
+      return Config{}, err
+  }
+
+  if raw.Port == 0 {
+      return Config{}, errors.New("port required")
+  }
+
+  config := Config{
+      Port:    raw.Port,
+      Host:    raw.Host,
+      Timeout: time.Duration(raw.TimeoutSec) * time.Second,
+  }
+
+  return config, nil
+}</pre></div></div><div role=tabpanel class=tabItem_Ymn6 hidden><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>with.go</span><span class=codeSpacer_nRmZ></span><span class="codeTag_uQ6s ok_rUJx">tested</span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import (
+  "github.com/IBM/fp-go/v2/ioresult"
+  "github.com/IBM/fp-go/v2/result"
+  "github.com/IBM/fp-go/v2/function"
+)
+
+func readFile(path string) ioresult.IOResult[[]byte] {
+  return func() result.Result[[]byte] {
+      data, err := os.ReadFile(path)
+      return result.FromGoError(data, err)
+  }
+}
+
+func parseJSON(data []byte) result.Result[RawConfig] {
+  var raw RawConfig
+  err := json.Unmarshal(data, &raw)
+  return result.FromGoError(raw, err)
+}
+
+func validateConfig(raw RawConfig) result.Result[RawConfig] {
+  if raw.Port == 0 {
+      return result.Err[RawConfig](errors.New("port required"))
+  }
+  return result.Ok(raw)
+}
+
+func transformConfig(raw RawConfig) Config {
+  return Config{
+      Port:    raw.Port,
+      Host:    raw.Host,
+      Timeout: time.Duration(raw.TimeoutSec) * time.Second,
+  }
+}
+
+func loadConfig() ioresult.IOResult[Config] {
+  return function.Pipe4(
+      readFile("config.json"),
+      ioresult.Chain(func(data []byte) ioresult.IOResult[RawConfig] {
+          return ioresult.FromResult(parseJSON(data))
+      }),
+      ioresult.Chain(func(raw RawConfig) ioresult.IOResult[RawConfig] {
+          return ioresult.FromResult(validateConfig(raw))
+      }),
+      ioresult.Map(transformConfig),
+  )
+}</pre></div></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>08</span><h2 class=sectionTitle__6nw id=patterns>Common<!-- --> <em>patterns.</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=sequential-operations>Sequential operations<a href=#sequential-operations class=hash-link aria-label="Direct link to Sequential operations" title="Direct link to Sequential operations" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>sequential.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result := function.Pipe4(
+  fetchUser(id),
+  result.Chain(validateUser),
+  result.Chain(enrichUser),
+  result.Chain(saveUser),
+)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=conditional-logic>Conditional logic<a href=#conditional-logic class=hash-link aria-label="Direct link to Conditional logic" title="Direct link to Conditional logic" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>conditional.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result := result.Chain(func(user User) result.Result[User] {
+  if user.Age &lt; 18 {
+      return result.Err[User](errors.New("too young"))
+  }
+  return result.Ok(user)
+})(userResult)</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=combining-results>Combining results<a href=#combining-results class=hash-link aria-label="Direct link to Combining results" title="Direct link to Combining results" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>combine.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+func createOrder(userID, productID string) result.Result[Order] {
+  user := fetchUser(userID)
+  product := fetchProduct(productID)
+
+  return result.Chain(func(u User) result.Result[Order] {
+      return result.Map(func(p Product) Order {
+          return Order{User: u, Product: p}
+      })(product)
+  })(user)
+}</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=error-recovery>Error recovery<a href=#error-recovery class=hash-link aria-label="Direct link to Error recovery" title="Direct link to Error recovery" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>recover.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+result := result.OrElse(func(err error) result.Result[User] {
+  log.Printf("Error: %v, using default", err)
+  return result.Ok(defaultUser)
+})(userResult)</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>09</span><h2 class=sectionTitle__6nw id=when>When to use<!-- --> <em>monads.</em></h2></div></div><div class=compare_WfXa><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>Use monads when</span><span class=comparePill_fmmx>fits</span></div><div class=compareBody_hP62><p>Chaining operations that can fail.<p>Handling optional values.<p>Managing side effects.<p>Building composable pipelines.<p>Need consistent error handling.</div></div><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Don't force when</span><span class=comparePill_fmmx>trade-offs</span></div><div class=compareBody_hP62><p>Simple, one-off operations.<p>Performance is critical (hot path).<p>Team unfamiliar with the pattern.<p>Standard Go is clearer.</div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>10</span><h2 class=sectionTitle__6nw id=faq>Common<!-- --> <em>questions.</em></h2></div></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Do I need to understand category theory?</strong><p>No. Think of monads as a design pattern for chaining operations with context. The theory is interesting but not required.</div></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Aren't monads just error handling?</strong><p>No. Error handling is one use case. Monads handle any "context": Option (optional values), Result (errors), IO (side effects), Array (multiple values), Reader (dependency injection).</div></div><div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Is this overengineering?</strong><p>Depends. For simple cases, standard Go is fine. For complex error handling and composition, monads shine.</div></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Map vs. Chain — quick rule.</strong><p>Map: function returns a plain value. Chain: function returns a monad.<div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>rule.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// Map: int → string
+result.Map(func(x int) string { return fmt.Sprint(x) })
+
+// Chain: int → Result[string]
+result.Chain(func(x int) result.Result[string] {
+  return result.Ok(fmt.Sprint(x))
+})</pre></div></div></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>11</span><h2 class=sectionTitle__6nw id=summary>Summary</h2></div></div><div class=check_Z_XE><div class=checkHead__B8i><span>Monads</span><span>5<!-- --> / <!-- -->5<!-- --> complete</span></div><ul class=checkList_ziWk><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>Pattern for chaining with context</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>Three parts: type, return, chain</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>Common types: Option, Result, IO, Array</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>Operations: Map, Chain, Fold</span><li class="checkItem_jgfw done_rLON"><span class=checkBox_TriO><svg width=10 height=10 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><span class=checkLbl_IWQU>Laws ensure predictable behavior</span></ul></div><div class="callout_yWfv success_D78d"><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M13 24l-9-9 1.4-1.4L13 21.2 26.6 7.6 28 9z"/></svg></span><div class=calloutBody_Qz4I><strong class=calloutTitle_MXy4>Key takeaway.</strong><p>Monads are a practical pattern for managing context in a composable way. You don't need to understand the theory to use them effectively.</div></div></section></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/concepts/pure-functions><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Pure Functions</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/concepts/composition><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Composition</span></a></nav></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#1-a-type-constructor class="table-of-contents__link toc-highlight">1. A type constructor</a><li><a href=#2-a-way-to-put-values-in-returnof class="table-of-contents__link toc-highlight">2. A way to put values in (<code>Return</code>/<code>Of</code>)</a><li><a href=#3-a-way-to-chain-operations-chainflatmap class="table-of-contents__link toc-highlight">3. A way to chain operations (<code>Chain</code>/<code>FlatMap</code>)</a><li><a href=#option-monad--might-not-have-a-value class="table-of-contents__link toc-highlight">Option monad — "might not have a value"</a><li><a href=#result-monad--might-be-an-error class="table-of-contents__link toc-highlight">Result monad — "might be an error"</a><li><a href=#io-monad--will-perform-side-effects class="table-of-contents__link toc-highlight">IO monad — "will perform side effects"</a><li><a href=#array-monad--has-multiple-values class="table-of-contents__link toc-highlight">Array monad — "has multiple values"</a><li><a href=#map-vs-chain class="table-of-contents__link toc-highlight">Map vs. Chain</a><li><a href=#common-operations-across-monads class="table-of-contents__link toc-highlight">Common operations across monads</a><li><a href=#law-1--left-identity class="table-of-contents__link toc-highlight">Law 1 — Left identity</a><li><a href=#law-2--right-identity class="table-of-contents__link toc-highlight">Law 2 — Right identity</a><li><a href=#law-3--associativity class="table-of-contents__link toc-highlight">Law 3 — Associativity</a><li><a href=#user-registration class="table-of-contents__link toc-highlight">User registration</a><li><a href=#configuration-loading class="table-of-contents__link toc-highlight">Configuration loading</a><li><a href=#sequential-operations class="table-of-contents__link toc-highlight">Sequential operations</a><li><a href=#conditional-logic class="table-of-contents__link toc-highlight">Conditional logic</a><li><a href=#combining-results class="table-of-contents__link toc-highlight">Combining results</a><li><a href=#error-recovery class="table-of-contents__link toc-highlight">Error recovery</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

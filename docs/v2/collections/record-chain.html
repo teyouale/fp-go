@@ -1,0 +1,215 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-v2/collections/record-chain" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Record - Chain | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/v2/collections/record-chain /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Record - Chain | fp-go"/><meta data-rh=true name=description content="FlatMap operations for maps - transform values to maps and flatten the result."/><meta data-rh=true property=og:description content="FlatMap operations for maps - transform values to maps and flatten the result."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/v2/collections/record-chain /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/v2/collections/record-chain hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/v2/collections/record-chain hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ibm.github.io/fp-go/docs/v2/collections/record-chain","name":"Record - Chain","position":1}]}</script><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a class="navbar__item navbar__link" href=/fp-go/docs/intro>Docs</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/v2/collections/record-chain>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/v2/collections/record-chain>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/intro>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><aside class=sidebar_mhZE><div class=search_L6yu><svg viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M21 21l-4.3-4.3M17 11a6 6 0 1 1-12 0 6 6 0 0 1 12 0z" stroke-linecap=round /></svg><input type=search placeholder="Search the docs…" aria-label="Filter sidebar" value="" /><kbd>⌘K</kbd></div><div class=header_Xfib><div class=eyebrow_TcFw>— Getting started</div><h4>Learn <em>fp-go</em></h4><div class=meta_jD0Z><span class=dot_y7ZM></span><span>0<!-- --> of <!-- -->56<!-- --> done</span><span>·</span><span>~<!-- -->224<!-- --> min left</span></div></div><nav class=list_cFHc aria-label="Docs sidebar"><div class=group_nY2A><h5 class=groupHead_I2bK><span>v2 Core Types</span><span class=ct_cC82>19</span></h5><a class=item_eWIL href=/fp-go/docs/v2/either><span class=num_TgSU>02</span><span class=title_kV1V>Either</span></a><a class=item_eWIL href=/fp-go/docs/v2/io><span class=num_TgSU>03</span><span class=title_kV1V>IO</span></a><a class=item_eWIL href=/fp-go/docs/v2/ioresult><span class=num_TgSU>04</span><span class=title_kV1V>IOResult</span></a><a class=item_eWIL href=/fp-go/docs/v2/ioeither><span class=num_TgSU>05</span><span class=title_kV1V>IOEither</span></a><a class=item_eWIL href=/fp-go/docs/v2/iooption><span class=num_TgSU>06</span><span class=title_kV1V>IOOption</span></a><a class=item_eWIL href=/fp-go/docs/v2/result><span class=num_TgSU>07</span><span class=title_kV1V>Result</span></a><a class=item_eWIL href=/fp-go/docs/v2/effect><span class=num_TgSU>08</span><span class=title_kV1V>Effect</span></a><a class=item_eWIL href=/fp-go/docs/v2/reader><span class=num_TgSU>09</span><span class=title_kV1V>Reader</span></a><a class=item_eWIL href=/fp-go/docs/v2/readereither><span class=num_TgSU>10</span><span class=title_kV1V>ReaderEither</span></a><a class=item_eWIL href=/fp-go/docs/v2/readerio><span class=num_TgSU>11</span><span class=title_kV1V>ReaderIO</span></a><a class=item_eWIL href=/fp-go/docs/v2/readerioeither><span class=num_TgSU>12</span><span class=title_kV1V>ReaderIOEither</span></a><a class=item_eWIL href=/fp-go/docs/v2/readerioresult><span class=num_TgSU>13</span><span class=title_kV1V>ReaderIOResult</span></a><a class=item_eWIL href=/fp-go/docs/v2/readeroption><span class=num_TgSU>14</span><span class=title_kV1V>ReaderOption</span></a><a class=item_eWIL href=/fp-go/docs/v2/state><span class=num_TgSU>15</span><span class=title_kV1V>State</span></a><a class=item_eWIL href=/fp-go/docs/v2/statereaderioeither><span class=num_TgSU>16</span><span class=title_kV1V>StateReaderIOEither</span></a><a class=item_eWIL href=/fp-go/docs/v2/lazy><span class=num_TgSU>17</span><span class=title_kV1V>Lazy</span></a><a class=item_eWIL href=/fp-go/docs/v2/constant><span class=num_TgSU>18</span><span class=title_kV1V>Constant</span></a><a class=item_eWIL href=/fp-go/docs/v2/identity><span class=num_TgSU>19</span><span class=title_kV1V>Identity</span></a><a class=item_eWIL href=/fp-go/docs/v2/endomorphism><span class=num_TgSU>20</span><span class=title_kV1V>Endomorphism</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>Collections</span><span class=ct_cC82>18</span></h5><a class=item_eWIL href=/fp-go/docs/v2/collections/array><span class=num_TgSU>21</span><span class=title_kV1V>Array</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-ap><span class=num_TgSU>22</span><span class=title_kV1V>Array - Applicative</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-eq><span class=num_TgSU>23</span><span class=title_kV1V>Array - Equality</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-find><span class=num_TgSU>24</span><span class=title_kV1V>Array - Find</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-monoid><span class=num_TgSU>25</span><span class=title_kV1V>Array - Monoid</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-sort><span class=num_TgSU>26</span><span class=title_kV1V>Array - Sort</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-uniq><span class=num_TgSU>27</span><span class=title_kV1V>Array - Uniq</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/array-zip><span class=num_TgSU>28</span><span class=title_kV1V>Array - Zip</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/nonempty-array><span class=num_TgSU>29</span><span class=title_kV1V>NonEmpty Array</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record><span class=num_TgSU>30</span><span class=title_kV1V>Record (Map)</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-ap><span class=num_TgSU>31</span><span class=title_kV1V>Record - Applicative</span></a><a aria-current=page class="item_eWIL itemActive_VQ2l itemActive_VQ2l" href=/fp-go/docs/v2/collections/record-chain><span class=num_TgSU>32</span><span class=title_kV1V>Record - Chain</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-conversion><span class=num_TgSU>33</span><span class=title_kV1V>Record - Conversion</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-eq><span class=num_TgSU>34</span><span class=title_kV1V>Record - Equality</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-monoid><span class=num_TgSU>35</span><span class=title_kV1V>Record - Monoid</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-ord><span class=num_TgSU>36</span><span class=title_kV1V>Record - Ordered</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/record-traverse><span class=num_TgSU>37</span><span class=title_kV1V>Record - Traverse</span></a><a class=item_eWIL href=/fp-go/docs/v2/collections/sequence-traverse><span class=num_TgSU>38</span><span class=title_kV1V>Sequence & Traverse</span></a></div><div class=group_nY2A><h5 class=groupHead_I2bK><span>More</span><span class=ct_cC82>01</span></h5><a class=item_eWIL href=/fp-go/docs/api-reference><span class=num_TgSU>01</span><span class=title_kV1V>API Reference</span></a></div><button type=button class=collapsible_dWJM aria-expanded=false><span>Utilities</span><span class=right_oCLK><span>14</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button><button type=button class=collapsible_dWJM aria-expanded=false><span>Advanced</span><span class=right_oCLK><span>04</span><svg class=chev_nHXh viewBox="0 0 24 24" width=14 height=14 fill=none stroke=currentColor stroke-width=2 aria-hidden=true><path d="M9 6l6 6-6 6" stroke-linecap=round stroke-linejoin=round /></svg></span></button></nav><a class=cta_I9bE href=/fp-go/playground><span class=ctaIcon_LlOW><svg viewBox="0 0 24 24" width=14 height=14 fill=currentColor aria-hidden=true><path d="M8 5v14l11-7-11-7z"/></svg></span><span class=ctaTxt_Psj5><b>Interactive Playground</b><span>Run fp-go in your browser</span></span></a></aside></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/fp-go/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Collections</span><li class=breadcrumbs__item><span class=breadcrumbs__link>Record</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Record - Chain</span></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Reference · Collections</div><h1 class=headTitle_xWjG>Record<!-- --> <em>Chain</em></h1><p class=lede_Ltdj>FlatMap operations for maps. Transform map values into new maps and flatten the result into a single map.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>Package</span><span class=metaV_zAp5>github.com/IBM/fp-go/v2/record</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Operations</span><span class=metaV_zAp5>Chain, ChainWithIndex</span></div></aside></header>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=api>Core<!-- --> <em>API</em></h2></div></div><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>Chain</code><td><code>func Chain[K comparable, A, B any](Monoid[K, B]) func(func(A) map[K]B) func(map[K]A) map[K]B</code><td>Transform and flatten<tr><td><code>ChainWithIndex</code><td><code>func ChainWithIndex[K comparable, A, B any](Monoid[K, B]) func(func(K, A) map[K]B) func(map[K]A) map[K]B</code><td>Chain with keys</table></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=examples>Usage<!-- --> <em>Examples</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=chain---basic>Chain - Basic<a href=#chain---basic class=hash-link aria-label="Direct link to Chain - Basic" title="Direct link to Chain - Basic" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>chain.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+import (
+  R "github.com/IBM/fp-go/v2/record"
+  M "github.com/IBM/fp-go/v2/monoid"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+m := map[string]int{"a": 1, "b": 2}
+
+// Expand each entry into multiple entries
+expanded := F.Pipe2(
+  m,
+  R.Chain(M.MergeMonoid[string, int]())(func(v int) map[string]int {
+      return map[string]int{
+          fmt.Sprintf("val_%d", v):    v,
+          fmt.Sprintf("double_%d", v): v * 2,
+      }
+  }),
+)
+// map[string]int{
+//   "val_1": 1, "double_1": 2,
+//   "val_2": 2, "double_2": 4,
+// }
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=chainwithindex>ChainWithIndex<a href=#chainwithindex class=hash-link aria-label="Direct link to ChainWithIndex" title="Direct link to ChainWithIndex" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>chain_index.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+m := map[string]int{"a": 1, "b": 2}
+
+// Use keys in expansion
+result := F.Pipe2(
+  m,
+  R.ChainWithIndex(M.MergeMonoid[string, int]())(
+      func(k string, v int) map[string]int {
+          return map[string]int{
+              k + "_original": v,
+              k + "_doubled":  v * 2,
+          }
+      },
+  ),
+)
+// map[string]int{
+//   "a_original": 1, "a_doubled": 2,
+//   "b_original": 2, "b_doubled": 4,
+// }
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=expanding-configuration>Expanding Configuration<a href=#expanding-configuration class=hash-link aria-label="Direct link to Expanding Configuration" title="Direct link to Expanding Configuration" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>config.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+type Config struct {
+  Replicas int
+  Prefix   string
+}
+
+configs := map[string]Config{
+  "web": {Replicas: 3, Prefix: "web"},
+  "api": {Replicas: 2, Prefix: "api"},
+}
+
+// Generate instance names
+instances := F.Pipe2(
+  configs,
+  R.ChainWithIndex(M.MergeMonoid[string, string]())(
+      func(service string, cfg Config) map[string]string {
+          result := make(map[string]string)
+          for i := 0; i &lt; cfg.Replicas; i++ {
+              key := fmt.Sprintf("%s-%d", service, i)
+              result[key] = fmt.Sprintf("%s-%d.example.com", cfg.Prefix, i)
+          }
+          return result
+      },
+  ),
+)
+// map[string]string{
+//   "web-0": "web-0.example.com",
+//   "web-1": "web-1.example.com",
+//   "web-2": "web-2.example.com",
+//   "api-0": "api-0.example.com",
+//   "api-1": "api-1.example.com",
+// }
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=dependency-resolution>Dependency Resolution<a href=#dependency-resolution class=hash-link aria-label="Direct link to Dependency Resolution" title="Direct link to Dependency Resolution" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>deps.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+type Package struct {
+  Name         string
+  Dependencies []string
+}
+
+packages := map[string]Package{
+  "app": {
+      Name:         "app",
+      Dependencies: []string{"lib1", "lib2"},
+  },
+}
+
+// Flatten dependencies
+allDeps := F.Pipe2(
+  packages,
+  R.Chain(M.MergeMonoid[string, bool]())(
+      func(pkg Package) map[string]bool {
+          deps := make(map[string]bool)
+          for _, dep := range pkg.Dependencies {
+              deps[dep] = true
+          }
+          return deps
+      },
+  ),
+)
+// map[string]bool{"lib1": true, "lib2": true}
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=tag-expansion>Tag Expansion<a href=#tag-expansion class=hash-link aria-label="Direct link to Tag Expansion" title="Direct link to Tag Expansion" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>tags.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+type Resource struct {
+  Name string
+  Tags []string
+}
+
+resources := map[string]Resource{
+  "server1": {
+      Name: "server1",
+      Tags: []string{"prod", "web"},
+  },
+  "server2": {
+      Name: "server2",
+      Tags: []string{"prod", "api"},
+  },
+}
+
+// Create tag index
+tagIndex := F.Pipe2(
+  resources,
+  R.ChainWithIndex(M.MergeMonoid[string, []string]())(
+      func(id string, res Resource) map[string][]string {
+          result := make(map[string][]string)
+          for _, tag := range res.Tags {
+              result[tag] = []string{id}
+          }
+          return result
+      },
+  ),
+)
+// map[string][]string{
+//   "prod": ["server1", "server2"],
+//   "web": ["server1"],
+//   "api": ["server2"],
+// }
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=patterns>Common<!-- --> <em>Patterns</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=nested-data-flattening>Nested Data Flattening<a href=#nested-data-flattening class=hash-link aria-label="Direct link to Nested Data Flattening" title="Direct link to Nested Data Flattening" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>flatten.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+type Category struct {
+  Name  string
+  Items []string
+}
+
+categories := map[string]Category{
+  "fruits": {
+      Name:  "Fruits",
+      Items: []string{"apple", "banana"},
+  },
+  "veggies": {
+      Name:  "Vegetables",
+      Items: []string{"carrot", "lettuce"},
+  },
+}
+
+// Flatten to item -> category mapping
+itemMap := F.Pipe2(
+  categories,
+  R.ChainWithIndex(M.MergeMonoid[string, string]())(
+      func(catKey string, cat Category) map[string]string {
+          result := make(map[string]string)
+          for _, item := range cat.Items {
+              result[item] = catKey
+          }
+          return result
+      },
+  ),
+)
+// map[string]string{
+//   "apple": "fruits",
+//   "banana": "fruits",
+//   "carrot": "veggies",
+//   "lettuce": "veggies",
+// }
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=permission-expansion>Permission Expansion<a href=#permission-expansion class=hash-link aria-label="Direct link to Permission Expansion" title="Direct link to Permission Expansion" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>permissions.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+type Role struct {
+  Name        string
+  Permissions []string
+}
+
+roles := map[string]Role{
+  "admin": {
+      Name:        "admin",
+      Permissions: []string{"read", "write", "delete"},
+  },
+  "user": {
+      Name:        "user",
+      Permissions: []string{"read"},
+  },
+}
+
+// Create permission -> roles mapping
+permMap := F.Pipe2(
+  roles,
+  R.ChainWithIndex(M.MergeMonoid[string, []string]())(
+      func(roleKey string, role Role) map[string][]string {
+          result := make(map[string][]string)
+          for _, perm := range role.Permissions {
+              result[perm] = []string{roleKey}
+          }
+          return result
+      },
+  ),
+)
+// map[string][]string{
+//   "read": ["admin", "user"],
+//   "write": ["admin"],
+//   "delete": ["admin"],
+// }
+</pre></div></section>
+<div class="callout_yWfv "><span class=calloutIcon_hdwU><svg width=18 height=18 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M16 14h-2v2h1v6h-1v2h4v-2h-1v-8zm-.5-5a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 15.5 9z"/></svg></span><div class=calloutBody_Qz4I><p><strong>Monoid Strategy</strong>: The monoid parameter determines how duplicate keys are handled when flattening. Use <code>MergeMonoid</code> for last-wins, or custom monoids for other strategies like concatenation or summation.</div></div></div><nav class=pager_oMm2><a class=pagerLink_hQ8Y href=/fp-go/docs/v2/collections/record-ap><span class=pagerLbl_CteO><svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M14 26l1.4-1.4L7.8 17H28v-2H7.8l7.6-7.6L14 6 4 16z"/></svg> <!-- -->Previous</span><span class=pagerTtl_t0em>Record - Applicative</span></a><a class="pagerLink_hQ8Y next_PLI2" href=/fp-go/docs/v2/collections/record-conversion><span class=pagerLbl_CteO>Next<!-- --> <svg width=12 height=12 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M18 6L16.6 7.4 24.2 15H4v2h20.2l-7.6 7.6L18 26l10-10z"/></svg></span><span class=pagerTtl_t0em>Record - Conversion</span></a></nav></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#chain---basic class="table-of-contents__link toc-highlight">Chain - Basic</a><li><a href=#chainwithindex class="table-of-contents__link toc-highlight">ChainWithIndex</a><li><a href=#expanding-configuration class="table-of-contents__link toc-highlight">Expanding Configuration</a><li><a href=#dependency-resolution class="table-of-contents__link toc-highlight">Dependency Resolution</a><li><a href=#tag-expansion class="table-of-contents__link toc-highlight">Tag Expansion</a><li><a href=#nested-data-flattening class="table-of-contents__link toc-highlight">Nested Data Flattening</a><li><a href=#permission-expansion class="table-of-contents__link toc-highlight">Permission Expansion</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>

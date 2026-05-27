@@ -1,0 +1,31 @@
+"use strict";(self.webpackChunkfp_go_docs=self.webpackChunkfp_go_docs||[]).push([["2541"],{3103(e,r,n){n.r(r),n.d(r,{metadata:()=>t,default:()=>h,frontMatter:()=>s,contentTitle:()=>c,toc:()=>a,assets:()=>o});var t=JSON.parse('{"id":"v2/readerio","title":"ReaderIO","description":"Dependency injection with lazy side effects - Reader + IO without error handling.","source":"@site/docs/v2/readerio.md","sourceDirName":"v2","slug":"/v2/readerio","permalink":"/fp-go/docs/v2/readerio","draft":false,"unlisted":false,"tags":[],"version":"current","sidebarPosition":19,"frontMatter":{"title":"ReaderIO","hide_title":true,"description":"Dependency injection with lazy side effects - Reader + IO without error handling.","sidebar_position":19},"sidebar":"apiSidebar","previous":{"title":"ReaderEither","permalink":"/fp-go/docs/v2/readereither"},"next":{"title":"ReaderIOEither","permalink":"/fp-go/docs/v2/readerioeither"}}'),d=n(4848),i=n(8453);let s={title:"ReaderIO",hide_title:!0,description:"Dependency injection with lazy side effects - Reader + IO without error handling.",sidebar_position:19},c,o={},a=[{value:"Constructors",id:"constructors",level:3},{value:"Transformations",id:"transformations",level:3},{value:"Basic Usage",id:"basic-usage",level:3}];function l(e){let r={code:"code",h3:"h3",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...(0,i.R)(),...e.components},{ApiTable:n,CodeCard:t,PageHeader:s,Section:c}=r;return n||u("ApiTable",!0),t||u("CodeCard",!0),s||u("PageHeader",!0),c||u("Section",!0),(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)(s,{eyebrow:"Reference \xb7 Core Type",title:"ReaderIO",lede:"Combine dependency injection (Reader) with lazy side effects (IO). ReaderIO[C, A] for effectful computations with dependencies.",meta:[{label:"Package",value:"github.com/IBM/fp-go/v2/readerio"},{label:"Type",value:"Monad (func(C) IO[A])"}]}),"\n",(0,d.jsx)(c,{id:"overview",number:"01",title:"Overview",children:(0,d.jsx)(t,{file:"type_definition.go",children:`package readerio
+
+// ReaderIO combines Reader and IO
+type ReaderIO[C, A any] = Reader[C, IO[A]]
+// Which expands to: func(C) func() A
+`})}),"\n",(0,d.jsxs)(c,{id:"api",number:"02",title:"Core",titleAccent:"API",children:[(0,d.jsx)(r.h3,{id:"constructors",children:"Constructors"}),(0,d.jsx)(n,{children:(0,d.jsxs)(r.table,{children:[(0,d.jsx)(r.thead,{children:(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.th,{children:"Function"}),(0,d.jsx)(r.th,{children:"Signature"}),(0,d.jsx)(r.th,{children:"Description"})]})}),(0,d.jsxs)(r.tbody,{children:[(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"Of"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func Of[C, A any](value A) ReaderIO[C, A]"})}),(0,d.jsx)(r.td,{children:"Wrap pure value"})]}),(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"Ask"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func Ask[C any]() ReaderIO[C, C]"})}),(0,d.jsx)(r.td,{children:"Access context"})]}),(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"Asks"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func Asks[C, A any](f func(C) A) ReaderIO[C, A]"})}),(0,d.jsx)(r.td,{children:"Access and transform context"})]}),(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"FromIO"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func FromIO[C, A any](io IO[A]) ReaderIO[C, A]"})}),(0,d.jsx)(r.td,{children:"Lift IO to ReaderIO"})]}),(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"FromReader"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func FromReader[C, A any](r Reader[C, A]) ReaderIO[C, A]"})}),(0,d.jsx)(r.td,{children:"Lift Reader to ReaderIO"})]})]})]})}),(0,d.jsx)(r.h3,{id:"transformations",children:"Transformations"}),(0,d.jsx)(n,{children:(0,d.jsxs)(r.table,{children:[(0,d.jsx)(r.thead,{children:(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.th,{children:"Function"}),(0,d.jsx)(r.th,{children:"Signature"}),(0,d.jsx)(r.th,{children:"Description"})]})}),(0,d.jsxs)(r.tbody,{children:[(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"Map"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func Map[C, A, B any](f func(A) B) func(ReaderIO[C, A]) ReaderIO[C, B]"})}),(0,d.jsx)(r.td,{children:"Transform result"})]}),(0,d.jsxs)(r.tr,{children:[(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"Chain"})}),(0,d.jsx)(r.td,{children:(0,d.jsx)(r.code,{children:"func Chain[C, A, B any](f func(A) ReaderIO[C, B]) func(ReaderIO[C, A]) ReaderIO[C, B]"})}),(0,d.jsx)(r.td,{children:"Sequence operations"})]})]})]})})]}),"\n",(0,d.jsxs)(c,{id:"examples",number:"03",title:"Usage",titleAccent:"Examples",children:[(0,d.jsx)(r.h3,{id:"basic-usage",children:"Basic Usage"}),(0,d.jsx)(t,{file:"basic.go",children:`package main
+
+import (
+  RIO "github.com/IBM/fp-go/v2/readerio"
+  IO "github.com/IBM/fp-go/v2/io"
+)
+
+type Dependencies struct {
+  Logger *log.Logger
+}
+
+func logMessage(msg string) RIO.ReaderIO[Dependencies, unit.Unit] {
+  return RIO.Ask[Dependencies, *log.Logger](func(deps Dependencies) *log.Logger {
+      return deps.Logger
+  }).Chain(func(logger *log.Logger) RIO.ReaderIO[Dependencies, unit.Unit] {
+      return RIO.FromIO(IO.FromImpure(func() {
+          logger.Println(msg)
+      }))
+  })
+}
+
+func main() {
+  deps := Dependencies{Logger: log.New(os.Stdout, "", 0)}
+  logMessage("Hello, World!")(deps)()
+}
+`})]})]})}function h(e={}){let{wrapper:r}={...(0,i.R)(),...e.components};return r?(0,d.jsx)(r,{...e,children:(0,d.jsx)(l,{...e})}):l(e)}function u(e,r){throw Error("Expected "+(r?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}},8453(e,r,n){n.d(r,{R:()=>s,x:()=>c});var t=n(6540);let d={},i=t.createContext(d);function s(e){let r=t.useContext(i);return t.useMemo(function(){return"function"==typeof e?e(r):{...r,...e}},[r,e])}function c(e){let r;return r=e.disableParentContext?"function"==typeof e.components?e.components(d):e.components||d:s(e.components),t.createElement(i.Provider,{value:r},e.children)}}}]);

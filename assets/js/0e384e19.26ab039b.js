@@ -1,0 +1,21 @@
+"use strict";(self.webpackChunkfp_go_docs=self.webpackChunkfp_go_docs||[]).push([["5217"],{4316(e,t,r){r.r(t),r.d(t,{metadata:()=>i,default:()=>p,frontMatter:()=>s,contentTitle:()=>a,toc:()=>c,assets:()=>l});var i=JSON.parse('{"id":"intro","title":"What is fp-go?","description":"A comprehensive functional programming library for Go \u2014 type-safe error handling, composable effects, and monadic types.","source":"@site/docs/intro.md","sourceDirName":".","slug":"/intro","permalink":"/fp-go/docs/intro","draft":false,"unlisted":false,"tags":[],"version":"current","sidebarPosition":1,"frontMatter":{"sidebar_position":1,"title":"What is fp-go?","hide_title":true,"description":"A comprehensive functional programming library for Go \u2014 type-safe error handling, composable effects, and monadic types."},"sidebar":"tutorialSidebar","next":{"title":"Installation","permalink":"/fp-go/docs/installation"}}'),n=r(4848),o=r(8453);let s={sidebar_position:1,title:"What is fp-go?",hide_title:!0,description:"A comprehensive functional programming library for Go \u2014 type-safe error handling, composable effects, and monadic types."},a,l={},c=[];function d(e){let t={em:"em",...(0,o.R)(),...e.components},{Callout:r,CodeCard:i,MetaPill:s,PageHeader:a,Section:l,TLDR:c,TLDRCard:d}=t;return r||u("Callout",!0),i||u("CodeCard",!0),s||u("MetaPill",!0),a||u("PageHeader",!0),l||u("Section",!0),c||u("TLDR",!0),d||u("TLDRCard",!0),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(a,{eyebrow:"Getting started \xb7 Section 01 / 01",title:"What is",titleAccent:"fp-go?",lede:"A comprehensive functional programming library for Go \u2014 strongly influenced by fp-ts, built around small, pure, composable functions.",meta:[{label:"// Version",value:(0,n.jsxs)(n.Fragment,{children:["v2.2.82 ",(0,n.jsx)(s,{children:"LATEST"})]})},{label:"// Go required",value:"1.24+"},{label:"// Reading time",value:"2 min \xb7 1 section"}]}),"\n",(0,n.jsxs)(c,{children:[(0,n.jsx)(d,{label:"// Approach",prose:!0,value:(0,n.jsxs)(n.Fragment,{children:["Many small, ",(0,n.jsx)(t.em,{children:"pure functions"})," with no hidden side effects."]})}),(0,n.jsx)(d,{label:"// Side effects",prose:!0,value:(0,n.jsxs)(n.Fragment,{children:["Isolated into ",(0,n.jsx)(t.em,{children:"lazy"})," IO-style computations."]})}),(0,n.jsx)(d,{label:"// Composition",prose:!0,value:(0,n.jsxs)(n.Fragment,{children:["A consistent set of combinators across ",(0,n.jsx)(t.em,{children:"every"})," data type."]})})]}),"\n",(0,n.jsxs)(l,{id:"quick-example",number:"01",title:"Quick",titleAccent:"example.",tag:"Difficulty \xb7 Beginner",lede:"Handle errors functionally with Either. Map transforms the success branch; errors flow through untouched.",children:[(0,n.jsx)(i,{file:"example.go",status:"tested",children:`import (
+  "errors"
+  "github.com/IBM/fp-go/either"
+  "github.com/IBM/fp-go/function"
+)
+
+// Pure function that can fail
+func divide(a, b int) either.Either[error, int] {
+  if b == 0 {
+      return either.Left[int](errors.New("division by zero"))
+  }
+  return either.Right[error](a / b)
+}
+
+// Compose operations safely
+result := function.Pipe2(
+  divide(10, 2),
+  either.Map(func(x int) int { return x * 2 }),
+  either.GetOrElse(func() int { return 0 }),
+)
+// result = 10`}),(0,n.jsx)(r,{title:"What this demonstrates.",children:(0,n.jsxs)("ul",{children:[(0,n.jsxs)("li",{children:["Express operations that can fail using the ",(0,n.jsx)("code",{children:"Either"})," type"]}),(0,n.jsx)("li",{children:"Chain operations together safely"}),(0,n.jsxs)("li",{children:["Handle errors explicitly without nested ",(0,n.jsx)("code",{children:"if"})," statements"]}),(0,n.jsx)("li",{children:"Write pure, composable functions"})]})})]})]})}function p(e={}){let{wrapper:t}={...(0,o.R)(),...e.components};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(d,{...e})}):d(e)}function u(e,t){throw Error("Expected "+(t?"component":"object")+" `"+e+"` to be defined: you likely forgot to import, pass, or provide it.")}},8453(e,t,r){r.d(t,{R:()=>s,x:()=>a});var i=r(6540);let n={},o=i.createContext(n);function s(e){let t=i.useContext(o);return i.useMemo(function(){return"function"==typeof e?e(t):{...t,...e}},[t,e])}function a(e){let t;return t=e.disableParentContext?"function"==typeof e.components?e.components(n):e.components||n:s(e.components),i.createElement(o.Provider,{value:t},e.children)}}}]);

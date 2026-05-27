@@ -1,0 +1,204 @@
+<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-option" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Option | fp-go</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://ibm.github.io/fp-go/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://ibm.github.io/fp-go/docs/option /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Option | fp-go"/><meta data-rh=true name=description content="Type-safe optional values with Some and None - eliminate nil pointer errors."/><meta data-rh=true property=og:description content="Type-safe optional values with Some and None - eliminate nil pointer errors."/><link data-rh=true rel=icon href=/fp-go/img/fp-go-logo.png /><link data-rh=true rel=canonical href=https://ibm.github.io/fp-go/docs/option /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/option hreflang=en /><link data-rh=true rel=alternate href=https://ibm.github.io/fp-go/docs/option hreflang=x-default /><link data-rh=true rel=preconnect href=https://YOUR_APP_ID-dsn.algolia.net crossorigin=anonymous /><link rel=search type=application/opensearchdescription+xml title=fp-go href=/fp-go/opensearch.xml><link rel=stylesheet href=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css><script src=https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js defer></script><link rel=stylesheet href=/fp-go/assets/css/styles.ec0c6253.css /><script src=/fp-go/assets/js/runtime~main.e1624f06.js defer></script><script src=/fp-go/assets/js/main.7674e666.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-84d")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/fp-go/img/fp-go-logo.png /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/fp-go/><div class=navbar__logo><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/fp-go/img/fp-go-logo.png alt="fp-go Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">fp-go</b></a><a class="navbar__item navbar__link" href=/fp-go/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/fp-go/docs/api-reference>API Reference</a><a class="navbar__item navbar__link" href=/fp-go/docs/recipes-index>Recipes</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/fp-go/docs/option>v2.2.82 (latest)</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/fp-go/docs/option>v2.2.82 (latest)</a><li><a class=dropdown__link href=/fp-go/docs/1.0.0/option>v1.x (legacy)</a></ul></div><div class=navbarSearchContainer_Bca1><button type=button class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts=Meta+k><span class=DocSearch-Button-Container><svg width=20 height=20 class=DocSearch-Search-Icon viewBox="0 0 24 24" aria-hidden=true><circle cx=11 cy=11 r=8 stroke=currentColor fill=none stroke-width=1.4 /><path d="m21 21-4.3-4.3" stroke=currentColor fill=none stroke-linecap=round stroke-linejoin=round /></svg><span class=DocSearch-Button-Placeholder>Search</span></span><span class=DocSearch-Button-Keys></span></button></div><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link">GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><style>.navbar__brand:after{content:"v2";font-family:var(--ifm-font-family-monospace);color:#0043ce;letter-spacing:.02em;text-transform:uppercase;background:#d0e2ff;border-radius:0;margin-left:6px;padding:2px 6px;font-size:10px;display:inline-block}[data-theme=dark] .navbar__brand:after{color:#78a9ff;background:#0043ce}</style><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_z5aJ"><div class=docItemContainer_c0TR><article><span class="theme-doc-version-badge badge badge--secondary">Version: v2.2.82 (latest)</span><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header class=head_Sp2B><div class=headLeft_aDUD><div class=eyebrow__SSv>Reference · Core Type</div><h1 class=headTitle_xWjG>Option</h1><p class=lede_Ltdj>Represent optional values without nil pointers. Option is either Some(value) or None, providing type-safe handling of missing values.</div><aside class=headMeta_kmCF><div class=metaRow_drwK><span class=metaK_SNLg>Package</span><span class=metaV_zAp5>github.com/IBM/fp-go/v2/option</span></div><div class=metaRow_drwK><span class=metaK_SNLg>Type</span><span class=metaV_zAp5>Monad</span></div></aside></header>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>01</span><h2 class=sectionTitle__6nw id=api>Core<!-- --> <em>API</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=constructors>Constructors<a href=#constructors class=hash-link aria-label="Direct link to Constructors" title="Direct link to Constructors" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>Some</code><td><code>func Some[A any](value A) Option[A]</code><td>Create an Option containing a value<tr><td><code>None</code><td><code>func None[A any]() Option[A]</code><td>Create an empty Option<tr><td><code>Of</code><td><code>func Of[A any](value A) Option[A]</code><td>Alias for Some (monadic pure)<tr><td><code>FromNillable</code><td><code>func FromNillable[A any](ptr *A) Option[A]</code><td>Convert pointer to Option (nil → None)<tr><td><code>FromPredicate</code><td><code>func FromPredicate[A any](pred func(A) bool) func(A) Option[A]</code><td>Create Option based on predicate</table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=predicates>Predicates<a href=#predicates class=hash-link aria-label="Direct link to Predicates" title="Direct link to Predicates" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>IsSome</code><td><code>func IsSome[A any](opt Option[A]) bool</code><td>Check if Option contains a value<tr><td><code>IsNone</code><td><code>func IsNone[A any](opt Option[A]) bool</code><td>Check if Option is empty</table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=extractors>Extractors<a href=#extractors class=hash-link aria-label="Direct link to Extractors" title="Direct link to Extractors" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>GetOrElse</code><td><code>func GetOrElse[A any](defaultValue func() A) func(Option[A]) A</code><td>Extract value or return default<tr><td><code>ToNillable</code><td><code>func ToNillable[A any](opt Option[A]) *A</code><td>Convert to pointer (None → nil)<tr><td><code>Match</code><td><code>func Match[A, B any](onNone func() B, onSome func(A) B) func(Option[A]) B</code><td>Pattern match on Option</table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=transformations>Transformations<a href=#transformations class=hash-link aria-label="Direct link to Transformations" title="Direct link to Transformations" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>Map</code><td><code>func Map[A, B any](f func(A) B) func(Option[A]) Option[B]</code><td>Transform the value if present<tr><td><code>Chain</code><td><code>func Chain[A, B any](f func(A) Option[B]) func(Option[A]) Option[B]</code><td>FlatMap - chain optional operations<tr><td><code>Ap</code><td><code>func Ap[A, B any](fa Option[A]) func(Option[func(A) B]) Option[B]</code><td>Apply wrapped function to wrapped value<tr><td><code>Flatten</code><td><code>func Flatten[A any](opt Option[Option[A]]) Option[A]</code><td>Flatten nested Options</table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=filtering>Filtering<a href=#filtering class=hash-link aria-label="Direct link to Filtering" title="Direct link to Filtering" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>Filter</code><td><code>func Filter[A any](pred func(A) bool) func(Option[A]) Option[A]</code><td>Keep value only if predicate holds<tr><td><code>FilterMap</code><td><code>func FilterMap[A, B any](f func(A) Option[B]) func(Option[A]) Option[B]</code><td>Map and filter in one operation</table></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=combinators>Combinators<a href=#combinators class=hash-link aria-label="Direct link to Combinators" title="Direct link to Combinators" translate=no>​</a></h3><div class=api_M0YO><table><thead><tr><th>Function<th>Signature<th>Description<tbody><tr><td><code>Alt</code><td><code>func Alt[A any](second Option[A]) func(Option[A]) Option[A]</code><td>Return first Some, or second if first is None<tr><td><code>OrElse</code><td><code>func OrElse[A any](alternative func() Option[A]) func(Option[A]) Option[A]</code><td>Lazy alternative</table></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>02</span><h2 class=sectionTitle__6nw id=examples>Usage<!-- --> <em>Examples</em></h2></div></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=basic-operations>Basic Operations<a href=#basic-operations class=hash-link aria-label="Direct link to Basic Operations" title="Direct link to Basic Operations" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>basic.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  O "github.com/IBM/fp-go/v2/option"
+)
+
+func main() {
+  // Create Options
+  some := O.Some(42)
+  none := O.None[int]()
+  
+  // Check for values
+  fmt.Println(O.IsSome(some)) // true
+  fmt.Println(O.IsNone(none)) // true
+  
+  // Extract values
+  value := O.GetOrElse(func() int { return 0 })(some)
+  fmt.Println(value) // 42
+  
+  defaultValue := O.GetOrElse(func() int { return 0 })(none)
+  fmt.Println(defaultValue) // 0
+}
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=transformations-1>Transformations<a href=#transformations-1 class=hash-link aria-label="Direct link to Transformations" title="Direct link to Transformations" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>transformations.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  "strings"
+  O "github.com/IBM/fp-go/v2/option"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+func main() {
+  // Map: transform the value
+  opt := O.Some("hello")
+  upper := F.Pipe1(
+      opt,
+      O.Map(strings.ToUpper),
+  )
+  fmt.Println(O.GetOrElse(func() string { return "" })(upper)) // HELLO
+  
+  // Chain: flatMap operations
+  divide := func(a, b int) O.Option[int] {
+      if b == 0 {
+          return O.None[int]()
+      }
+      return O.Some(a / b)
+  }
+  
+  result := F.Pipe1(
+      O.Some(10),
+      O.Chain(func(n int) O.Option[int] {
+          return divide(n, 2)
+      }),
+  )
+  fmt.Println(O.GetOrElse(func() int { return 0 })(result)) // 5
+  
+  // Filter: keep value only if predicate holds
+  filtered := F.Pipe1(
+      O.Some(42),
+      O.Filter(func(n int) bool { return n > 50 }),
+  )
+  fmt.Println(O.IsNone(filtered)) // true (42 is not > 50)
+}
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=pattern-matching>Pattern Matching<a href=#pattern-matching class=hash-link aria-label="Direct link to Pattern Matching" title="Direct link to Pattern Matching" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>pattern_matching.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  O "github.com/IBM/fp-go/v2/option"
+)
+
+func main() {
+  opt := O.Some(42)
+  
+  // Match: handle both cases
+  result := O.Match(
+      func() string { return "No value" },
+      func(n int) string { return fmt.Sprintf("Value: %d", n) },
+  )(opt)
+  
+  fmt.Println(result) // Value: 42
+}
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-example-configuration>Practical Example: Configuration<a href=#practical-example-configuration class=hash-link aria-label="Direct link to Practical Example: Configuration" title="Direct link to Practical Example: Configuration" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>config.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  O "github.com/IBM/fp-go/v2/option"
+  F "github.com/IBM/fp-go/v2/function"
+)
+
+type Config struct {
+  Port    O.Option[int]
+  Host    O.Option[string]
+  Timeout O.Option[int]
+}
+
+func getPort(config Config) int {
+  return F.Pipe1(
+      config.Port,
+      O.GetOrElse(func() int { return 8080 }),
+  )
+}
+
+func getHost(config Config) string {
+  return F.Pipe1(
+      config.Host,
+      O.GetOrElse(func() string { return "localhost" }),
+  )
+}
+
+func main() {
+  // Config with explicit values
+  config1 := Config{
+      Port: O.Some(3000),
+      Host: O.Some("0.0.0.0"),
+      Timeout: O.Some(30),
+  }
+  fmt.Printf("Server: %s:%d
+", getHost(config1), getPort(config1))
+  // Server: 0.0.0.0:3000
+  
+  // Config with defaults
+  config2 := Config{
+      Port: O.None[int](),
+      Host: O.None[string](),
+      Timeout: O.Some(60),
+  }
+  fmt.Printf("Server: %s:%d
+", getHost(config2), getPort(config2))
+  // Server: localhost:8080
+}
+</pre></div><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=working-with-pointers>Working with Pointers<a href=#working-with-pointers class=hash-link aria-label="Direct link to Working with Pointers" title="Direct link to Working with Pointers" translate=no>​</a></h3><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>pointers.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+package main
+
+import (
+  "fmt"
+  O "github.com/IBM/fp-go/v2/option"
+)
+
+func findUser(id string) *User {
+  if id == "123" {
+      return &User{ID: "123", Name: "Alice"}
+  }
+  return nil
+}
+
+type User struct {
+  ID   string
+  Name string
+}
+
+func main() {
+  // Convert pointer to Option
+  userPtr := findUser("123")
+  opt := O.FromNillable(userPtr)
+  
+  fmt.Println(O.IsSome(opt)) // true
+  
+  // Convert back to pointer
+  ptr := O.ToNillable(opt)
+  if ptr != nil {
+      fmt.Println(ptr.Name) // Alice
+  }
+  
+  // Handle missing user
+  missingPtr := findUser("999")
+  missingOpt := O.FromNillable(missingPtr)
+  fmt.Println(O.IsNone(missingOpt)) // true
+}
+</pre></div></section>
+<section class=section_B_ST><div class=sectionHead_oGCN><div class=sectionHeadLeft_bfh9><span class=sectionNum_qiYt>03</span><h2 class=sectionTitle__6nw id=why-option>Why Use<!-- --> <em>Option?</em></h2></div></div><div class=check_Z_XE><div class=checkHead__B8i><span>Steps</span></div><ul class=checkList_ziWk><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Type Safety</strong> — Compiler ensures you handle both Some and None cases</p></span><span class=checkImpact_BaeN>required</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>No Nil Panics</strong> — Eliminates nil pointer dereference errors</p></span><span class=checkImpact_BaeN>required</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Explicit Intent</strong> — Makes it clear when a value might be absent</p></span><span class=checkImpact_BaeN>recommended</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Composability</strong> — Works seamlessly with pipe, map, chain, and other fp-go functions</p></span><span class=checkImpact_BaeN>recommended</span><li class="checkItem_jgfw "><span class=checkBox_TriO></span><span class=checkLbl_IWQU><p><strong>Functional Style</strong> — Encourages declarative, expression-based code</p></span><span class=checkImpact_BaeN>optional</span></ul></div><div class=compare_WfXa><div class="compareCol_nZe9 bad_pZ5b"><div class=compareHead_vAhW><span>Before</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>traditional.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ❌ Traditional nil handling
+func getUser(id string) *User {
+  // Might return nil
+  return db.FindUser(id)
+}
+
+user := getUser("123")
+if user != nil {
+  // Easy to forget nil check
+  fmt.Println(user.Name) // Potential panic!
+}
+</pre></div></div></div><div class="compareCol_nZe9 good_EJeo"><div class=compareHead_vAhW><span>After</span></div><div class=compareBody_hP62><div class=codeCard_fiIG><div class=codeBar_SZ78><span class=codeDot_JDOV></span><span class=codeFile_uZDd>option_based.go</span><span class=codeSpacer_nRmZ></span><button type=button class=codeCopy_fKPb aria-label="Copy code"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/></svg></button></div><pre class=codeBlock_oEWX>
+// ✅ Option-based handling
+func getUser(id string) O.Option[User] {
+  user := db.FindUser(id)
+  return O.FromNillable(user)
+}
+
+// Compiler forces you to handle both cases
+O.Match(
+  func() { fmt.Println("User not found") },
+  func(u User) { fmt.Println(u.Name) },
+)(getUser("123"))
+</pre></div></div></div></div></section></div></article></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#constructors class="table-of-contents__link toc-highlight">Constructors</a><li><a href=#predicates class="table-of-contents__link toc-highlight">Predicates</a><li><a href=#extractors class="table-of-contents__link toc-highlight">Extractors</a><li><a href=#transformations class="table-of-contents__link toc-highlight">Transformations</a><li><a href=#filtering class="table-of-contents__link toc-highlight">Filtering</a><li><a href=#combinators class="table-of-contents__link toc-highlight">Combinators</a><li><a href=#basic-operations class="table-of-contents__link toc-highlight">Basic Operations</a><li><a href=#transformations-1 class="table-of-contents__link toc-highlight">Transformations</a><li><a href=#pattern-matching class="table-of-contents__link toc-highlight">Pattern Matching</a><li><a href=#practical-example-configuration class="table-of-contents__link toc-highlight">Practical Example: Configuration</a><li><a href=#working-with-pointers class="table-of-contents__link toc-highlight">Working with Pointers</a></ul></div></div></div></div></main></div></div></div><footer class=footer_d1NW><div class=top_gkll><div class=grid_NUEU><div class=topGrid_BJn6><div class=lockup_s12x><div class=wordmark_F4Ca>fp-go <em>· functional Go</em></div><p>A practical, generics-powered functional toolkit for Go. Apache 2.0 — open source and IBM-maintained.<div class=install_ln9n title="Copy install command"><span class=cmd_GdN9><span class=p_w1sB>$</span>go get github.com/IBM/fp-go/v2</span><button type=button class=cp_Uu2q aria-label="Copy install command"><svg width=14 height=14 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4z"/></svg></button></div></div><nav class=ftCol_g3uR><h5>Documentation</h5><a href=/fp-go/docs/intro>Getting Started</a><a href=/fp-go/docs/quickstart>Quick Start</a><a href=/fp-go/docs/installation>Installation</a><a href=/fp-go/docs/migration>Migration Guide</a></nav><nav class=ftCol_g3uR><h5>Learn</h5><a href=/fp-go/docs/concepts>Core Concepts</a><a href=/fp-go/docs/recipes>Recipes</a><a href=/fp-go/docs/v2/result>API Reference</a><a href=/fp-go/docs/faq>FAQ</a></nav><nav class=ftCol_g3uR><h5>Community</h5><a href=https://github.com/IBM/fp-go target=_blank rel="noopener noreferrer">GitHub<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/issues target=_blank rel="noopener noreferrer">Issues<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/discussions target=_blank rel="noopener noreferrer">Discussions<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/CONTRIBUTING.md target=_blank rel="noopener noreferrer">Contributing<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a></nav><nav class=ftCol_g3uR><h5>More</h5><a href=https://ibm.github.io/ target=_blank rel="noopener noreferrer">IBM Open Source<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://pkg.go.dev/github.com/IBM/fp-go/v2 target=_blank rel="noopener noreferrer">Go Package<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/blob/main/LICENSE target=_blank rel="noopener noreferrer">License<svg class=ext_T10n width=11 height=11 viewBox="0 0 32 32" fill=currentColor aria-hidden=true><path d="M10 6v2h12.59L6 24.59 7.41 26 24 9.41V22h2V6z"/></svg></a><a href=https://github.com/IBM/fp-go/security target=_blank rel="noopener noreferrer">Security</a></nav></div></div></div><div class=bot_HmeQ><div class=grid_NUEU><div class=botGrid_O4V1><div class=copy_kvc_>© <!-- -->2026<!-- --> IBM Corporation · Licensed under <b>Apache 2.0</b> · Built with Docusaurus</div><div class=badges_AXex><span class=badge_Z1s6><span class=dot_qomU></span> v2.2.82 stable</span><span class=badge_Z1s6>Go 1.21+</span></div><div class=legal_RAQW><a href=https://www.ibm.com/privacy target=_blank rel="noopener noreferrer">Privacy</a><a href=https://www.ibm.com/legal target=_blank rel="noopener noreferrer">Terms</a><a href=https://www.ibm.com/legal/copytrade target=_blank rel="noopener noreferrer">Trademarks</a></div></div></div></div></footer></div></body>
